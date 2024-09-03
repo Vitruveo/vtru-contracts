@@ -14116,6 +14116,299 @@
         "type": "receive",
         "stateMutability": "payable"
       }
+    ],
+    "CreatorVaultFactory": [
+      {
+        "type": "constructor",
+        "stateMutability": "undefined",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "initTarget"
+          },
+          {
+            "type": "address",
+            "name": "licenseRegistry"
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "OwnershipTransferred",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "previousOwner",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "newOwner",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "VaultCreated",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "vaultKey",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "vault",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "createVault",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "vaultKey"
+          },
+          {
+            "type": "string",
+            "name": "vaultName"
+          },
+          {
+            "type": "string",
+            "name": "vaultSymbol"
+          },
+          {
+            "type": "address[]",
+            "name": "wallets"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "getBeacon",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getImplementation",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getKeyAtIndex",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "index"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getLicenseRegistryContract",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getVault",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "vaultKey"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getVaultAtIndex",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "index"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getVaultBatch",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "start"
+          },
+          {
+            "type": "uint256",
+            "name": "count"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address[]",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getVaultCount",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "count"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "isVault",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "vaultKey"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "licenseRegistryContract",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "owner",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "renounceOwnership",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setLicenseRegistryContract",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "transferOwnership",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newOwner"
+          }
+        ],
+        "outputs": []
+      }
     ]
   }
 }
