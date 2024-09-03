@@ -124,7 +124,7 @@ contract LicenseRegistry is
     function issueLicenseUsingCredits(string calldata assetKey, uint256 licenseTypeId, uint64 quantity) public whenNotPaused nonReentrant isAllowed(msg.sender) {
         _issueLicenseUsingCredits(msg.sender, assetKey, licenseTypeId, quantity);
     }
-    
+
     function issueLicenseUsingCreditsStudio(address licensee, string calldata assetKey, uint256 licenseTypeId, uint64 quantity) public whenNotPaused nonReentrant {
         require(msg.sender == global.studioAccount, UNAUTHORIZED_USER);
         _issueLicenseUsingCredits(licensee, assetKey, licenseTypeId, quantity);
@@ -246,8 +246,13 @@ contract LicenseRegistry is
         return (0, grantCents + nonGrantCents, nonGrantCents); 
     }
 
-    function getAvailableVUSD(address account) public view returns(uint, uint) {
+    function getBuyerBalancesInCents(address account) public view returns(uint, uint) {
         return IVUSD(VUSD_CONTRACT).getBalancesInCents(account);
+    }
+
+    function getBuyCapabilityInCents(address account, address[5] memory payees, uint[5] memory cents) public view returns(uint total, uint grant, uint nonGrant, uint balance) {
+        (uint totalVusd, uint grantVusd, uint nonGrantVusd, uint balanceVusd) = IVUSD(VUSD_CONTRACT).calculateRedemptionAmounts(account, payees, cents);
+        return (totalVusd/1e4, grantVusd/1e4, nonGrantVusd/1e4, balanceVusd/1e4);
     }
 
     function getAvailableLicense(string calldata assetKey, uint licenseTypeId, uint64 quantity) public view returns(LicenseInfo memory) {

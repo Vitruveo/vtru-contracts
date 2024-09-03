@@ -41,6 +41,7 @@ interface ICreatorVaultFactory {
 interface IVUSD {
     function redeem(address grantee, uint licenseInstanceId, address[5] memory payees, uint[5] memory cents) external;
     function getBalancesInCents(address account) external view returns(uint, uint);
+    function calculateRedemptionAmounts(address account, address[5] memory payees, uint[5] memory cents) external view returns(uint totalVusd, uint grantVusd, uint nonGrantVusd, uint balanceVusd);
 }
 
 abstract contract ICreatorData {

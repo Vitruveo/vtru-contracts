@@ -6423,7 +6423,46 @@
       },
       {
         "type": "function",
-        "name": "getAvailableVUSD",
+        "name": "getBuyCapabilityInCents",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "address[5]",
+            "name": "payees"
+          },
+          {
+            "type": "uint256[5]",
+            "name": "cents"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "total"
+          },
+          {
+            "type": "uint256",
+            "name": "grant"
+          },
+          {
+            "type": "uint256",
+            "name": "nonGrant"
+          },
+          {
+            "type": "uint256",
+            "name": "balance"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getBuyerBalancesInCents",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
