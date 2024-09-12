@@ -184,7 +184,7 @@ contract AssetRegistry is
         return false;
     }
 
-    function updatedLicensePrice(string calldata assetKey, uint licenseTypeId, uint64 editionCents) public onlyEditor(assetKey) whenNotPaused {
+    function updateLicensePrice(string calldata assetKey, uint licenseTypeId, uint64 editionCents) public onlyEditor(assetKey) whenNotPaused {
         require(isLicenseEditable(assetKey, licenseTypeId), "License is not editable");
 
         ICreatorData.LicenseInfo[] memory licenses = getAssetLicenses(assetKey);

@@ -5573,7 +5573,7 @@
       },
       {
         "type": "function",
-        "name": "updatedLicensePrice",
+        "name": "updateLicensePrice",
         "constant": false,
         "payable": false,
         "inputs": [
