@@ -33,6 +33,10 @@ interface IWVTRU {
     function priceCurrent() external view returns (uint);
 }
 
+interface ICreatorVault {
+    function isVaultWallet(address) external returns(bool);
+}
+
 contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUpgradeable, AccessControlUpgradeable, ReentrancyGuardUpgradeable {
     using Address for address payable;
 
@@ -118,11 +122,11 @@ contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUp
 
     /// @dev Get the current price of VTRU in cents, returns 100 if the price is zero
     function getCurrentVtruPrice() public view returns (uint) {
-        uint price = IWVTRU(WVTRU_ADDRESS).priceCurrent();
-        if (price == 0) {
-            price = 100; // Default to 100 cents if the price is zero
+        if (fallbackVtruPrice > 0) {
+            return fallbackVtruPrice;
+        } else {
+            return IWVTRU(WVTRU_ADDRESS).priceCurrent();
         }
-        return price;
     }
 
     /// @dev Grant tokens to a specified address by paying with VTRU
@@ -229,14 +233,11 @@ contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUp
 
             grantVusd = grantCents * 1e4;
 
-            if (grantVusd >= totalVusd) {
-                grantVusd = totalVusd;
-            }
+            uint limitVusd = totalVusd > vaultLimit ? vaultLimit : totalVusd;
 
-            if (grantVusd >= vaultLimit) {
-                grantVusd = vaultLimit; // Constrain grant amount to use based on Vault limit
+            if (grantVusd >= limitVusd) {
+                grantVusd = limitVusd;
             }
-
         }
 
         balanceVusd = totalVusd - grantVusd;
@@ -255,7 +256,6 @@ contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUp
 
     /// @dev Redeem tokens on behalf of a user and pay payees
     function redeem(address account, uint licenseInstanceId, address[5] memory payees, uint[5] memory cents) public whenNotPaused nonReentrant onlyRole(REDEEMER_ROLE) {
-
         (uint totalVusd, uint grantVusd, , uint balanceVusd) = calculateRedemptionAmounts(account, payees, cents);
 
         if (totalVusd > 0) {
@@ -266,6 +266,7 @@ contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUp
 
             if (grantVusd > 0) {
                 address vault = payees[0]; // Vault is always first address
+                require(ICreatorVault(vault).isVaultWallet(account) == false, "Cannot redeem for own work");
                 redemptionAmounts[account][vault] += grantVusd;
                 redemptionCounts[account][vault]++;
                 grants[account].balance -= grantVusd;
@@ -313,6 +314,7 @@ contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUp
     function setDefaultVaultMaxRedemptionCount(uint count) public onlyRole(DEFAULT_ADMIN_ROLE) {
         maxRedemptionsPerVault = count;
     }
+
 
     /// @dev Withdraw all USDC from the contract
     function withdrawUsdc() public onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -366,4 +368,12 @@ contract VUSD is Initializable, ERC20Upgradeable, OwnableUpgradeable, PausableUp
     function setMaxRedemptionAmountByVault(uint dollars, address vault) public onlyRole(BLOCKER_ROLE) {
         vaultMaxRedemptionAmounts[vault] = dollars * VUSD_DECIMALS;
     }
+
+    uint public fallbackVtruPrice;
+
+    /// @dev Fallback VTRU price for testnet
+    function setFallbackVtruPrice(uint cents) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        fallbackVtruPrice = cents;
+    }
+
 }

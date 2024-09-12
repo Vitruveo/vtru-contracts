@@ -662,7 +662,7 @@ contract CoreVestV2 is
     uint public stakeUnlockedTotal;
     uint public stakeLockedTotal;
 
-   function stakePreview(
+    function stakePreview(
                         address account,
                         uint[] memory airdropVtru 
                 ) public view returns(uint unstakeAmount, uint vibeTotal, bool allowRedeem) {

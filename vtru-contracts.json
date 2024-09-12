@@ -11,7 +11,8 @@
     "CreatorVault": "0x7aea4a32df743644474e62Bc38E7D6D0C00Af365",
     "CreatorVaultFactory": "0xDFda76C704515d19C737C54cFf523E45ab01d90A",
     "wVTRU": "0x3ccc3F22462cAe34766820894D04a40381201ef9",
-    "VIBE": "0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a"
+    "VIBE": "0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a",
+    "VEO": "0x4D5B24179c656A88087eF4369887fD58AB5e8EF3"
   },
   "testnet": {
     "VIBE": "0x0fF7Ec155f8AB6689Ce47C34C4F619f569F65D03",
@@ -23,7 +24,23 @@
     "CollectorCredit": "0x2921f3c02f4c6b1BbD35c5B8deA666F78A9D5919",
     "CoreStake": "0x2e26E4bA078Dd4DD9641DE9B538F8c9A975FD388",
     "CreatorVault": "0xBFfFda780bc78DE87316525DFd8Aaafe0523B251",
-    "CreatorVaultFactory": "0xB507bc726f9Fdb29527667A1e39D0F3E05D37C4d"
+    "CreatorVaultFactory": "0xB507bc726f9Fdb29527667A1e39D0F3E05D37C4d",
+    "VUSD": "0xE2D9A4901020C602BF291B1C56E97dC6dfa5b505"
+  },
+  "ethereum": {
+    "VEO": "0x3153F488233132c429175b5FD8199eb775b6C6Ff"
+  },
+  "bsc": {
+    "VEO": "0x6793c3172DacaE034B3e84909E200DB285225AB3"
+  },
+  "polygon": {
+    "VEO": "0x6793c3172DacaE034B3e84909E200DB285225AB3"
+  },
+  "base": {
+    "VEO": "0x6793c3172DacaE034B3e84909E200DB285225AB3"
+  },
+  "avalanche": {
+    "VEO": "0x30d414eab3575ff4bF1Ea2c63401BA1D22De231f"
   },
   "abi": {
     "VIBE": [
@@ -5117,113 +5134,6 @@
       },
       {
         "type": "function",
-        "name": "getAssetBatch",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "start"
-          },
-          {
-            "type": "uint256",
-            "name": "count"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "tuple[]",
-            "name": "",
-            "components": [
-              {
-                "type": "string",
-                "name": "key"
-              },
-              {
-                "type": "tuple",
-                "name": "core",
-                "components": [
-                  {
-                    "type": "string",
-                    "name": "title"
-                  },
-                  {
-                    "type": "string",
-                    "name": "description"
-                  },
-                  {
-                    "type": "string",
-                    "name": "tokenUri"
-                  },
-                  {
-                    "type": "string[]",
-                    "name": "mediaTypes"
-                  },
-                  {
-                    "type": "string[]",
-                    "name": "mediaItems"
-                  },
-                  {
-                    "type": "uint8",
-                    "name": "status"
-                  }
-                ]
-              },
-              {
-                "type": "tuple",
-                "name": "creator",
-                "components": [
-                  {
-                    "type": "address",
-                    "name": "vault"
-                  },
-                  {
-                    "type": "uint256",
-                    "name": "split"
-                  }
-                ]
-              },
-              {
-                "type": "tuple[]",
-                "name": "collaborators",
-                "components": [
-                  {
-                    "type": "address",
-                    "name": "vault"
-                  },
-                  {
-                    "type": "uint256",
-                    "name": "split"
-                  }
-                ]
-              },
-              {
-                "type": "uint256[]",
-                "name": "licenses"
-              },
-              {
-                "type": "uint8",
-                "name": "status"
-              },
-              {
-                "type": "uint8",
-                "name": "originator"
-              },
-              {
-                "type": "address",
-                "name": "editor"
-              },
-              {
-                "type": "bool",
-                "name": "isPremium"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "getAssetCount",
         "constant": true,
         "stateMutability": "view",
@@ -5505,6 +5415,29 @@
       },
       {
         "type": "function",
+        "name": "isLicenseEditable",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "assetKey"
+          },
+          {
+            "type": "uint256",
+            "name": "licenseTypeId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "pause",
         "constant": false,
         "payable": false,
@@ -5640,6 +5573,27 @@
       },
       {
         "type": "function",
+        "name": "updatedLicensePrice",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "assetKey"
+          },
+          {
+            "type": "uint256",
+            "name": "licenseTypeId"
+          },
+          {
+            "type": "uint64",
+            "name": "editionCents"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "upgradeAsset",
         "constant": false,
         "stateMutability": "payable",
@@ -5682,20 +5636,6 @@
           }
         ],
         "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "version",
-        "constant": true,
-        "stateMutability": "pure",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "string",
-            "name": ""
-          }
-        ]
       },
       {
         "type": "receive",
@@ -5985,20 +5925,6 @@
         "outputs": [
           {
             "type": "bytes32",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "VUSD_CONTRACT",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "address",
             "name": ""
           }
         ]
@@ -7077,6 +7003,19 @@
       },
       {
         "type": "function",
+        "name": "setVUSDContract",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "supportsInterface",
         "constant": true,
         "stateMutability": "view",
@@ -7192,6 +7131,20 @@
       {
         "type": "function",
         "name": "vibeContract",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "vusdContract",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -9282,6 +9235,28 @@
       {
         "type": "event",
         "anonymous": false,
+        "name": "StakeRedeemed",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "user",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "amount",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "reward",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "Staked",
         "inputs": [
           {
@@ -9565,6 +9540,18 @@
               },
               {
                 "type": "uint256",
+                "name": "amount"
+              },
+              {
+                "type": "uint256",
+                "name": "startBlock"
+              },
+              {
+                "type": "uint256",
+                "name": "stakeTermID"
+              },
+              {
+                "type": "uint256",
                 "name": "unstakeAmount"
               },
               {
@@ -9614,6 +9601,31 @@
             "name": ""
           }
         ]
+      },
+      {
+        "type": "function",
+        "name": "importUserStakes",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "user"
+          },
+          {
+            "type": "uint256[]",
+            "name": "amounts"
+          },
+          {
+            "type": "uint256[]",
+            "name": "startBlocks"
+          },
+          {
+            "type": "uint256[]",
+            "name": "stakeTermIDs"
+          }
+        ],
+        "outputs": []
       },
       {
         "type": "function",
@@ -9890,7 +9902,7 @@
         "inputs": [
           {
             "type": "address",
-            "name": "user"
+            "name": "account"
           },
           {
             "type": "uint256",
@@ -9898,6 +9910,37 @@
           }
         ],
         "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "unstakeRedeemPreview",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "earlyUnstaked"
+          },
+          {
+            "type": "uint256",
+            "name": "earlyReward"
+          },
+          {
+            "type": "bool",
+            "name": "allowRedeem"
+          }
+        ]
       },
       {
         "type": "function",
@@ -10495,6 +10538,20 @@
       },
       {
         "type": "function",
+        "name": "fallbackVtruPrice",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "getAccountVaultInfo",
         "constant": true,
         "stateMutability": "view",
@@ -11032,6 +11089,19 @@
           {
             "type": "uint256",
             "name": "count"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setFallbackVtruPrice",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "cents"
           }
         ],
         "outputs": []
@@ -12265,14 +12335,6 @@
             "name": "account"
           }
         ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "mintFix",
-        "constant": false,
-        "payable": false,
-        "inputs": [],
         "outputs": []
       },
       {
@@ -14408,6 +14470,1029 @@
           }
         ],
         "outputs": []
+      }
+    ],
+    "VEO": [
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "AdminChanged",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "previousAdmin",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "newAdmin",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Airdrop",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "buyer",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "bundles",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "BeaconUpgraded",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "beacon",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "BridgeReceive",
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "fromChainId",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "buyer",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "bundles",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "BridgeSend",
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "toChainId",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "buyer",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "bundles",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Initialized",
+        "inputs": [
+          {
+            "type": "uint8",
+            "name": "version",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "MessageOwnershipTransferred",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "previousOwner",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "newOwner",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Paused",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RecoverToken",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "owner",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "token",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "amount",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleAdminChanged",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "bytes32",
+            "name": "previousAdminRole",
+            "indexed": true
+          },
+          {
+            "type": "bytes32",
+            "name": "newAdminRole",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleGranted",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleRevoked",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "SendMessageWithFeature",
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "txId",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "destinationChainId",
+            "indexed": false
+          },
+          {
+            "type": "uint32",
+            "name": "featureId",
+            "indexed": false
+          },
+          {
+            "type": "bytes",
+            "name": "featureData",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "SetExsig",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "owner",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "exsig",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "SetMaxfee",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "owner",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "maxfee",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "SetMaxgas",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "owner",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "maxGas",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Unpaused",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Upgraded",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "implementation",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "fallback",
+        "stateMutability": "payable"
+      },
+      {
+        "type": "function",
+        "name": "BUNDLE_PRICE_USDC",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "CHAINS",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": "endpoint"
+          },
+          {
+            "type": "bytes",
+            "name": "endpointExtended"
+          },
+          {
+            "type": "uint16",
+            "name": "confirmations"
+          },
+          {
+            "type": "bool",
+            "name": "extended"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "DEFAULT_ADMIN_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "FEATURES",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          },
+          {
+            "type": "uint32",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": "endpoint"
+          },
+          {
+            "type": "bytes",
+            "name": "endpointExtended"
+          },
+          {
+            "type": "uint16",
+            "name": "confirmations"
+          },
+          {
+            "type": "bool",
+            "name": "extended"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "FEATURE_GATEWAY",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "FEE_TOKEN",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "MESSAGE_OWNER",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "MESSAGEv3",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "UPGRADER_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "USDC",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "USDC_DECIMALS",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "bundlesSold",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "configureClient",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_messageV3"
+          },
+          {
+            "type": "uint256[]",
+            "name": "_chains"
+          },
+          {
+            "type": "address[]",
+            "name": "_endpoints"
+          },
+          {
+            "type": "uint16[]",
+            "name": "_confirmations"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "configureClientExtended",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_messageV3"
+          },
+          {
+            "type": "uint256[]",
+            "name": "_chains"
+          },
+          {
+            "type": "bytes[]",
+            "name": "_endpoints"
+          },
+          {
+            "type": "uint16[]",
+            "name": "_confirmations"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "configureFeatureGateway",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_featureGateway"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "getRoleAdmin",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "grantRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "hasRole",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "initialize",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "isAuthorized",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_sender"
+          },
+          {
+            "type": "uint256",
+            "name": "_sourceChainId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "isSelf",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_sender"
+          },
+          {
+            "type": "uint256",
+            "name": "_sourceChainId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "messageProcess",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          },
+          {
+            "type": "uint256",
+            "name": "sourceChainId"
+          },
+          {
+            "type": "address",
+            "name": "sender"
+          },
+          {
+            "type": "address",
+            "name": ""
+          },
+          {
+            "type": "uint256",
+            "name": ""
+          },
+          {
+            "type": "bytes",
+            "name": "data"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintAdmin",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "buyer"
+          },
+          {
+            "type": "uint256",
+            "name": "bundles"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintBridge",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "destChainId"
+          },
+          {
+            "type": "address",
+            "name": "buyer"
+          },
+          {
+            "type": "uint256",
+            "name": "bundles"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintPublic",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "bundles"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "pause",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "paused",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "proxiableUUID",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "recoverToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_token"
+          },
+          {
+            "type": "uint256",
+            "name": "_amount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "renounceRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "revokeRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setExsig",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_signer"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setMaxfee",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "_maxFee"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setMaxgas",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "_maxGas"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setUSDCAddress",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "USDCContract"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "supportsInterface",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes4",
+            "name": "interfaceId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "transferMessageOwnership",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "_newMessageOwner"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "unpause",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeTo",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeToAndCall",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          },
+          {
+            "type": "bytes",
+            "name": "data"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "withdrawUSDC",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "withdrawVTRU",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "receive",
+        "stateMutability": "payable"
       }
     ]
   }

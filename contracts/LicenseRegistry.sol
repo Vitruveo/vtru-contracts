@@ -76,8 +76,7 @@ contract LicenseRegistry is
     mapping(address => OwnedTokenInfo[]) mintRegistry;
     uint64 public platformFeeBasisPoints;
     address public vibeContract;
-
-    address public constant VUSD_CONTRACT = 0x1D607d8c617A09c638309bE2Ceb9b4afF42236dA;
+    address public vusdContract;
 
     function initialize() public initializer {
         // __Pausable_init();
@@ -142,7 +141,7 @@ contract LicenseRegistry is
  
         // 2) Redeem credits and send VTRU to vault
         address reserved = address(0);
-        IVUSD(VUSD_CONTRACT).redeem(
+        IVUSD(vusdContract).redeem(
                                         licensee, 
                                         _licenseInstanceId.current(), 
                                         [asset.creator.vault, vibeContract, reserved, reserved, reserved], 
@@ -242,16 +241,16 @@ contract LicenseRegistry is
     }
 
     function getAvailableCredits(address account) public view returns(uint tokens, uint creditCents, uint creditOther) {
-        (uint grantCents, uint nonGrantCents) = IVUSD(VUSD_CONTRACT).getBalancesInCents(account);
+        (uint grantCents, uint nonGrantCents) = IVUSD(vusdContract).getBalancesInCents(account);
         return (0, grantCents + nonGrantCents, nonGrantCents); 
     }
 
     function getBuyerBalancesInCents(address account) public view returns(uint, uint) {
-        return IVUSD(VUSD_CONTRACT).getBalancesInCents(account);
+        return IVUSD(vusdContract).getBalancesInCents(account);
     }
 
     function getBuyCapabilityInCents(address account, address[5] memory payees, uint[5] memory cents) public view returns(uint total, uint grant, uint nonGrant, uint balance) {
-        (uint totalVusd, uint grantVusd, uint nonGrantVusd, uint balanceVusd) = IVUSD(VUSD_CONTRACT).calculateRedemptionAmounts(account, payees, cents);
+        (uint totalVusd, uint grantVusd, uint nonGrantVusd, uint balanceVusd) = IVUSD(vusdContract).calculateRedemptionAmounts(account, payees, cents);
         return (totalVusd/1e4, grantVusd/1e4, nonGrantVusd/1e4, balanceVusd/1e4);
     }
 
@@ -333,6 +332,11 @@ contract LicenseRegistry is
     function setVIBEContract(address account) public  onlyRole(DEFAULT_ADMIN_ROLE) {
         require(account != address(0), "Invalid address");
         vibeContract = account;
+    }
+
+    function setVUSDContract(address account) public  onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(account != address(0), "Invalid address");
+        vusdContract = account;
     }
 
     function getVIBEContract() public view returns(address) {

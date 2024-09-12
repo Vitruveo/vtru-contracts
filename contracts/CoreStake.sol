@@ -48,6 +48,15 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         bool eligibleToUnstake;
     }
 
+    struct StakeDetailInfo {
+        uint stakeId;
+        uint amount;
+        uint startBlock;
+        uint stakeTermID;
+        uint unstakeAmount;
+        bool eligibleToUnstake;
+    }
+
     // Mappings
     mapping(uint => StakeTerm) public stakeTerms;
     mapping(address => StakeTermInfo[]) public userStakes;
@@ -158,9 +167,9 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         return (false, 0, 0);
     }
 
-    function getUserStakesInfo(address account, bool unstakeNow) external view returns (StakeInfo[] memory) {
+    function getUserStakesInfo(address account, bool unstakeNow) external view returns (StakeDetailInfo[] memory) {
         StakeTermInfo[] storage stakesArray = userStakes[account];
-        StakeInfo[] memory stakeInfos = new StakeInfo[](stakesArray.length);
+        StakeDetailInfo[] memory stakeInfos = new StakeDetailInfo[](stakesArray.length);
 
         for (uint i = 0; i < stakesArray.length; i++) {
             StakeTermInfo storage stakeInfo = stakesArray[i];
@@ -172,8 +181,11 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
             uint reward = eligibleToUnstake ? calculatePartialReward(stakeInfo.amount, stakeInfo.startBlock, endBlock, stakeInfo.stakeTermID) : 0;
             uint unstakeAmount = stakeInfo.amount + reward;
 
-            stakeInfos[i] = StakeInfo({
+            stakeInfos[i] = StakeDetailInfo({
                 stakeId: i,
+                amount: stakeInfo.amount,
+                startBlock: stakeInfo.startBlock,
+                stakeTermID: stakeInfo.stakeTermID,
                 eligibleToUnstake: eligibleToUnstake,
                 unstakeAmount: unstakeAmount
             });
@@ -287,6 +299,7 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
             amounts.length == stakeTermIDs.length,
             "Input arrays must have the same length"
         );
+
 
         for (uint i = 0; i < amounts.length; i++) {
             require(stakeTerms[stakeTermIDs[i]].epochs > 0, "Invalid stake term");

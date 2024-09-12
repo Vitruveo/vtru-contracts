@@ -32,8 +32,8 @@ contract Vortex is
 {
     IERC20 public usdc;
     uint public constant USDC_DECIMALS = 10**6;
-    uint public constant INITIAL_PRICE = 10 * USDC_DECIMALS; // $10 in USDC
-    uint public constant FINAL_PRICE = 12500000; // $20 in USDC
+    uint public constant INITIAL_PRICE = 10 * USDC_DECIMALS;
+    uint public constant FINAL_PRICE = 25000000; 
     uint public constant MAX_TOKENS = 100000;
     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
     uint public constant MAX_AIRDROP_WINS = 3;

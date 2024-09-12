@@ -58,20 +58,16 @@ contract AssetRegistry is
 
     function initialize() public initializer {
 
-        __Pausable_init();
-        __AccessControl_init();
-        __UUPSUpgradeable_init();
-        __ReentrancyGuard_init();
+        // __Pausable_init();
+        // __AccessControl_init();
+        // __UUPSUpgradeable_init();
+        // __ReentrancyGuard_init();
 
-        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _grantRole(UPGRADER_ROLE, msg.sender);
+        // _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        // _grantRole(UPGRADER_ROLE, msg.sender);
 
-        global.premiumFee = 10 * DECIMALS;
-        global.creatorCreditsRequired = 1;
-    }
-
-    function version() public pure returns(string memory) {
-        return "0.5.0";
+        // global.premiumFee = 10 * DECIMALS;
+        // global.creatorCreditsRequired = 1;
     }
 
     function consign(
@@ -178,6 +174,28 @@ contract AssetRegistry is
         }
     }
 
+    function isLicenseEditable(string calldata assetKey, uint licenseTypeId) public view returns(bool) {
+        ICreatorData.LicenseInfo[] memory licenses = getAssetLicenses(assetKey);
+        for(uint i=0;i<licenses.length;i++) {
+            if (licenses[i].licenseTypeId == licenseTypeId) {
+                return (global.licenses[licenses[i].id].licensees.length == 0);
+            }
+        }
+        return false;
+    }
+
+    function updatedLicensePrice(string calldata assetKey, uint licenseTypeId, uint64 editionCents) public onlyEditor(assetKey) whenNotPaused {
+        require(isLicenseEditable(assetKey, licenseTypeId), "License is not editable");
+
+        ICreatorData.LicenseInfo[] memory licenses = getAssetLicenses(assetKey);
+        for(uint i=0;i<licenses.length;i++) {
+            if (licenses[i].licenseTypeId == licenseTypeId) {
+                global.licenses[licenses[i].id].editionCents = editionCents;
+                break;
+            }
+        }
+    }
+
     function changeAssetStatus(string calldata assetKey, ICreatorData.Status status) public whenNotPaused {
         if (status == Status.BLOCKED || global.assets[assetKey].status == Status.BLOCKED) { // Only Studio can set or change from Blocked
             require(hasRole(STUDIO_ROLE, msg.sender) || hasRole(LICENSOR_ROLE, msg.sender), UNAUTHORIZED_USER);
@@ -258,14 +276,14 @@ contract AssetRegistry is
         return super.supportsInterface(interfaceId);
     }
 
-    function getAssetBatch(uint256 start, uint256 count) public view returns(AssetInfo[] memory) {
-        AssetInfo[] memory result = new AssetInfo[](count);
+    // function getAssetBatch(uint256 start, uint256 count) public view returns(AssetInfo[] memory) {
+    //     AssetInfo[] memory result = new AssetInfo[](count);
 
-        for(uint i=start; i<start+count; i++) {
-           result[i - start] = getAssetAtIndex(i);
-        }
-        return(result);
-    }
+    //     for(uint i=start; i<start+count; i++) {
+    //        result[i - start] = getAssetAtIndex(i);
+    //     }
+    //     return(result);
+    // }
 
     function getAssetCount() public view returns(uint count) {
         return assetList.count();
