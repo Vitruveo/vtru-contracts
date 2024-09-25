@@ -305,8 +305,7 @@ contract CoreVestV2 is
         return newCoreNFT.id;
     }
 
-// Temporarily turn off to allow VIBE staking
-/*
+
     function batchBoostAccount(address account, uint256[] memory boosterIds) public whenNotPaused returns(uint16, uint256) {
         uint256 tokenId = 0;
         for(uint256 t=1;t<currentSupply();t++) {
@@ -362,7 +361,7 @@ contract CoreVestV2 is
 
         return (coreNFT.boostBasisPoints, booster.tokensDue * DECIMALS);
     }
-*/
+
 
     function calculateGrantClaimAmounts(uint256 tokenId, bool includeRebase) public view returns(uint256, uint256, uint256) {
         return calculateGrantClaimAmounts(tokenId, includeRebase, block.number);
@@ -450,23 +449,23 @@ contract CoreVestV2 is
         return (claimAmount, rebaseClaimAmount, months);
     }
 
-    function revokeCoreNFT(uint256 tokenId) external whenNotPaused onlyRole(GRANTER_ROLE) {
+    // function revokeCoreNFT(uint256 tokenId) external whenNotPaused onlyRole(GRANTER_ROLE) {
 
-        CoreNFT storage coreNFT = global.CoreNFTs[tokenId];    
-        require(coreNFT.classId > 0, "Token ID does not exist");
-        require(!coreNFT.isRevoked, "Token was revoked");
-        require(coreNFT.isRevocable, "Token grant is not revocable");
+    //     CoreNFT storage coreNFT = global.CoreNFTs[tokenId];    
+    //     require(coreNFT.classId > 0, "Token ID does not exist");
+    //     require(!coreNFT.isRevoked, "Token was revoked");
+    //     require(coreNFT.isRevocable, "Token grant is not revocable");
 
-        coreNFT.isRevoked = true;
-        uint256 refundAmount = coreNFT.depositAmount - coreNFT.claimedGrantAmount;
-        totalCurrentDepositBalance -= refundAmount;
-        global.totalDepositBalance -= refundAmount;
+    //     coreNFT.isRevoked = true;
+    //     uint256 refundAmount = coreNFT.depositAmount - coreNFT.claimedGrantAmount;
+    //     totalCurrentDepositBalance -= refundAmount;
+    //     global.totalDepositBalance -= refundAmount;
 
-        (bool claimed, ) = payable(msg.sender).call{value: refundAmount}("");
-        require(claimed, "Failed to refund");        
+    //     (bool claimed, ) = payable(msg.sender).call{value: refundAmount}("");
+    //     require(claimed, "Failed to refund");        
 
-        emit CoreNFTRevoked(tokenId);
-    }
+    //     emit CoreNFTRevoked(tokenId);
+    // }
 
     // Processes a claim resulting from a grant
     // This would be unlocked and vested coins
@@ -577,17 +576,17 @@ contract CoreVestV2 is
     }
 
     // Registers a Core NFT Class
-    function registerCoreClass(
-        uint256 id,
-        string memory name,
-        bool isTransferable,
-        bool allowMultiple
-    ) public onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused returns (CoreNFTClass memory) {
+    // function registerCoreClass(
+    //     uint256 id,
+    //     string memory name,
+    //     bool isTransferable,
+    //     bool allowMultiple
+    // ) public onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused returns (CoreNFTClass memory) {
 
-        global.CoreNFTClasses[id] = CoreNFTClass(id, name, isTransferable, allowMultiple, true, 0);
+    //     global.CoreNFTClasses[id] = CoreNFTClass(id, name, isTransferable, allowMultiple, true, 0);
   
-        return global.CoreNFTClasses[id];
-    }
+    //     return global.CoreNFTClasses[id];
+    // }
 
     // Updates a Core NFT Class
     function updateCoreClass(
@@ -630,6 +629,10 @@ contract CoreVestV2 is
         require(payable(msg.sender).send(address(this).balance));
     }
 
+    function transferVTRU(address account, uint amount) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(payable(account).send(amount));
+    } 
+
     receive() external payable {
     }
 
@@ -662,61 +665,18 @@ contract CoreVestV2 is
     uint public stakeUnlockedTotal;
     uint public stakeLockedTotal;
 
-    function stakePreview(
-                        address account,
-                        uint[] memory airdropVtru 
-                ) public view returns(uint unstakeAmount, uint vibeTotal, bool allowRedeem) {
+    // event VTRUStaked(address indexed account, uint amount, uint yearCount);
+
+    // function stake(
+    //                 address account,
+    //                 uint yearCount
+    //             ) public payable whenNotPaused {
         
-        require(account != address(0), "Invalid account address");
+    //     require(account != address(0), "Invalid account address");
 
-        uint[] memory airdropInfo = new uint[](2); // swap, stake
-
-        // Airdrop stake
-        airdropInfo[0] = airdropVtru[0]; // Airdrop swap total
-        vibeTotal = airdropVtru[0] / 20;  // Swap VTRU for VIBE
-
-        for(uint u=1; u<airdropVtru.length; u++) {
-            if (airdropVtru[u] / 150 > 0) {
-                airdropInfo[1] += airdropVtru[u]; // Airdrop stake total
-                vibeTotal += (airdropVtru[u] / 150) * u; 
-            }
-        }
-
-        unstakeAmount = (airdropInfo[0] + airdropInfo[1]) * DECIMALS;
-        uint earlyUnstaked;
-        uint earlyReward;
-
-        (earlyUnstaked, earlyReward, allowRedeem) = CoreStake(0xf793A4faD64241c7273b9329FE39e433c2D45d71).unstakeRedeemPreview(account, unstakeAmount);
-    }
-
-    function stake(
-                        address account,
-                        uint[] memory airdropVtru 
-                ) public whenNotPaused {
-        
-        require(account != address(0), "Invalid account address");
-
-        uint[] memory airdropInfo = new uint[](2); // swap, stake
-        uint vibeTotal;
-
-        // Airdrop stake
-        airdropInfo[0] = airdropVtru[0]; // Airdrop swap total
-        vibeTotal = airdropVtru[0] / 20;  // Swap VTRU for VIBE
-
-        for(uint u=1; u<airdropVtru.length; u++) {
-            if (airdropVtru[u] / 150 > 0) {
-                stakes[account].push(StakeInfo(BLOCKS_PER_YEAR * u, airdropVtru[u] * DECIMALS));
-                airdropInfo[1] += airdropVtru[u]; // Airdrop stake total
-                vibeTotal += (airdropVtru[u] / 150) * u; 
-            }
-        }
-
-        uint unstakeAmount = (airdropInfo[0] + airdropInfo[1]) * DECIMALS;
-
-        CoreStake(0xf793A4faD64241c7273b9329FE39e433c2D45d71).unstakeRedeem(account, unstakeAmount);
-
-        stakeUnlockedTotal += airdropInfo[1]; // Global unlock stake total
-        VIBE(0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a).issueVibeNFTForStake(account, vibeTotal);
-    }
+    //     stakes[account].push(StakeInfo(BLOCKS_PER_YEAR * yearCount, msg.value));
+    //     stakeUnlockedTotal += msg.value / DECIMALS;
+    //     emit VTRUStaked(account, msg.value, yearCount);
+    // }
 }
 

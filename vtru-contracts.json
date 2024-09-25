@@ -1905,6 +1905,84 @@
       },
       {
         "type": "function",
+        "name": "batchBoostAccount",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256[]",
+            "name": "boosterIds"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint16",
+            "name": ""
+          },
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "batchBoostToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "tokenId"
+          },
+          {
+            "type": "uint256[]",
+            "name": "boosterIds"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint16",
+            "name": ""
+          },
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "boostToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "tokenId"
+          },
+          {
+            "type": "uint256",
+            "name": "boosterId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint16",
+            "name": ""
+          },
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "calculateGrantClaimAmounts",
         "constant": true,
         "stateMutability": "view",
@@ -2575,62 +2653,6 @@
       },
       {
         "type": "function",
-        "name": "registerCoreClass",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "id"
-          },
-          {
-            "type": "string",
-            "name": "name"
-          },
-          {
-            "type": "bool",
-            "name": "isTransferable"
-          },
-          {
-            "type": "bool",
-            "name": "allowMultiple"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "tuple",
-            "name": "",
-            "components": [
-              {
-                "type": "uint256",
-                "name": "id"
-              },
-              {
-                "type": "string",
-                "name": "name"
-              },
-              {
-                "type": "bool",
-                "name": "isTransferable"
-              },
-              {
-                "type": "bool",
-                "name": "allowMultiple"
-              },
-              {
-                "type": "bool",
-                "name": "isActive"
-              },
-              {
-                "type": "uint256",
-                "name": "totalGrants"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "renounceRole",
         "constant": false,
         "payable": false,
@@ -2642,19 +2664,6 @@
           {
             "type": "address",
             "name": "account"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "revokeCoreNFT",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "tokenId"
           }
         ],
         "outputs": []
@@ -2788,23 +2797,6 @@
       },
       {
         "type": "function",
-        "name": "stake",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256[]",
-            "name": "airdropVtru"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "stakeLockedTotal",
         "constant": true,
         "stateMutability": "view",
@@ -2814,37 +2806,6 @@
           {
             "type": "uint256",
             "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "stakePreview",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256[]",
-            "name": "airdropVtru"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": "unstakeAmount"
-          },
-          {
-            "type": "uint256",
-            "name": "vibeTotal"
-          },
-          {
-            "type": "bool",
-            "name": "allowRedeem"
           }
         ]
       },
@@ -2972,6 +2933,23 @@
           {
             "type": "uint256",
             "name": "tokenId"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "transferVTRU",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
           }
         ],
         "outputs": []
@@ -5847,6 +5825,20 @@
       },
       {
         "type": "function",
+        "name": "FEE_BASISPOINTS_MAX",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "KEEPER_ROLE",
         "constant": true,
         "stateMutability": "view",
@@ -6789,6 +6781,39 @@
           {
             "type": "uint64",
             "name": "quantity"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "issueLicenseUsingCreditsWithPayeesStudio",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "licensee"
+          },
+          {
+            "type": "string",
+            "name": "assetKey"
+          },
+          {
+            "type": "uint256",
+            "name": "licenseTypeId"
+          },
+          {
+            "type": "uint64",
+            "name": "quantity"
+          },
+          {
+            "type": "address[]",
+            "name": "payees"
+          },
+          {
+            "type": "uint256[]",
+            "name": "feeBasisPoints"
           }
         ],
         "outputs": []
@@ -9235,28 +9260,6 @@
       {
         "type": "event",
         "anonymous": false,
-        "name": "StakeRedeemed",
-        "inputs": [
-          {
-            "type": "address",
-            "name": "user",
-            "indexed": true
-          },
-          {
-            "type": "uint256",
-            "name": "amount",
-            "indexed": false
-          },
-          {
-            "type": "uint256",
-            "name": "reward",
-            "indexed": false
-          }
-        ]
-      },
-      {
-        "type": "event",
-        "anonymous": false,
         "name": "Staked",
         "inputs": [
           {
@@ -9371,7 +9374,7 @@
       },
       {
         "type": "function",
-        "name": "REDEEMER_ROLE",
+        "name": "UPGRADER_ROLE",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -9385,14 +9388,19 @@
       },
       {
         "type": "function",
-        "name": "UPGRADER_ROLE",
+        "name": "activeStakeTerms",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [],
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ],
         "outputs": [
           {
-            "type": "bytes32",
+            "type": "bool",
             "name": ""
           }
         ]
@@ -9496,6 +9504,27 @@
       },
       {
         "type": "function",
+        "name": "changeStakeTerm",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "stakeTermId"
+          },
+          {
+            "type": "uint256",
+            "name": "epochs"
+          },
+          {
+            "type": "uint256",
+            "name": "aprBasisPoints"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "getRoleAdmin",
         "constant": true,
         "stateMutability": "view",
@@ -9510,6 +9539,38 @@
           {
             "type": "bytes32",
             "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getStakeTerms",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "tuple[]",
+            "name": "",
+            "components": [
+              {
+                "type": "uint256",
+                "name": "id"
+              },
+              {
+                "type": "uint256",
+                "name": "epochs"
+              },
+              {
+                "type": "uint256",
+                "name": "aprBasisPoints"
+              },
+              {
+                "type": "bool",
+                "name": "active"
+              }
+            ]
           }
         ]
       },
@@ -9601,31 +9662,6 @@
             "name": ""
           }
         ]
-      },
-      {
-        "type": "function",
-        "name": "importUserStakes",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "user"
-          },
-          {
-            "type": "uint256[]",
-            "name": "amounts"
-          },
-          {
-            "type": "uint256[]",
-            "name": "startBlocks"
-          },
-          {
-            "type": "uint256[]",
-            "name": "stakeTermIDs"
-          }
-        ],
-        "outputs": []
       },
       {
         "type": "function",
@@ -9721,11 +9757,93 @@
       },
       {
         "type": "function",
+        "name": "setStakeTermStatus",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "stakeTermId"
+          },
+          {
+            "type": "bool",
+            "name": "isActive"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "stake",
         "constant": false,
         "stateMutability": "payable",
         "payable": true,
         "inputs": [
+          {
+            "type": "uint256",
+            "name": "stakeTermID"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "stakeAdmin",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+          {
+            "type": "address[]",
+            "name": "accounts"
+          },
+          {
+            "type": "uint256",
+            "name": "stakeTermID"
+          },
+          {
+            "type": "uint256",
+            "name": "blockNumber"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "stakeAdminFunded",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "stakeTermID"
+          },
+          {
+            "type": "uint256",
+            "name": "blockNumber"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "stakeFor",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
           {
             "type": "uint256",
             "name": "stakeTermID"
@@ -9889,58 +10007,10 @@
         "inputs": [
           {
             "type": "address",
-            "name": "user"
+            "name": "account"
           }
         ],
         "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "unstakeRedeem",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "amount"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "unstakeRedeemPreview",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "amount"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": "earlyUnstaked"
-          },
-          {
-            "type": "uint256",
-            "name": "earlyReward"
-          },
-          {
-            "type": "bool",
-            "name": "allowRedeem"
-          }
-        ]
       },
       {
         "type": "function",
@@ -14493,7 +14563,7 @@
       {
         "type": "event",
         "anonymous": false,
-        "name": "Airdrop",
+        "name": "AirdropVEO",
         "inputs": [
           {
             "type": "address",
@@ -14502,7 +14572,34 @@
           },
           {
             "type": "uint256",
+            "name": "amount",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
             "name": "bundles",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "referrer",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "AirdropVUSD",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "buyer",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "amount",
             "indexed": false
           }
         ]
@@ -14522,7 +14619,7 @@
       {
         "type": "event",
         "anonymous": false,
-        "name": "BridgeReceive",
+        "name": "BridgeIn",
         "inputs": [
           {
             "type": "uint256",
@@ -14530,13 +14627,28 @@
             "indexed": false
           },
           {
+            "type": "uint256",
+            "name": "taskId",
+            "indexed": true
+          },
+          {
             "type": "address",
             "name": "buyer",
             "indexed": true
           },
           {
             "type": "uint256",
-            "name": "bundles",
+            "name": "amount",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "quantity",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "referrer",
             "indexed": false
           }
         ]
@@ -14544,12 +14656,17 @@
       {
         "type": "event",
         "anonymous": false,
-        "name": "BridgeSend",
+        "name": "BridgeOut",
         "inputs": [
           {
             "type": "uint256",
             "name": "toChainId",
             "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "taskId",
+            "indexed": true
           },
           {
             "type": "address",
@@ -14558,7 +14675,17 @@
           },
           {
             "type": "uint256",
-            "name": "bundles",
+            "name": "amount",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "quantity",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "referrer",
             "indexed": false
           }
         ]
@@ -14859,6 +14986,20 @@
       },
       {
         "type": "function",
+        "name": "DISCOUNT_BLOCK_LIMIT",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "FEATURES",
         "constant": true,
         "stateMutability": "view",
@@ -14922,6 +15063,20 @@
       },
       {
         "type": "function",
+        "name": "MAX_BUNDLES",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "MESSAGE_OWNER",
         "constant": true,
         "stateMutability": "view",
@@ -14944,6 +15099,76 @@
         "outputs": [
           {
             "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "REFERRAL_FEE_BASIS_POINTS",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "REFERRAL_VIBE_THRESHOLD",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "TASK_MINT_VEO",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "TASK_MINT_VUSD",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "TOKEN_DECIMALS",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
             "name": ""
           }
         ]
@@ -14992,6 +15217,48 @@
       },
       {
         "type": "function",
+        "name": "VTRO",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "VUSD",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "bonusTxCount",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "bundlesSold",
         "constant": true,
         "stateMutability": "view",
@@ -15001,6 +15268,57 @@
           {
             "type": "uint256",
             "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "calculateAirdrop",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "bundles"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "txAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "payAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "vtruAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "vtruStake"
+          },
+          {
+            "type": "uint256",
+            "name": "vtroAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "vortexAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "vibeAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "vibeBonus"
           }
         ]
       },
@@ -15215,7 +15533,7 @@
       },
       {
         "type": "function",
-        "name": "mintAdmin",
+        "name": "mintAdminVEO",
         "constant": false,
         "payable": false,
         "inputs": [
@@ -15232,7 +15550,7 @@
       },
       {
         "type": "function",
-        "name": "mintBridge",
+        "name": "mintBridgeVEO",
         "constant": false,
         "payable": false,
         "inputs": [
@@ -15247,19 +15565,65 @@
           {
             "type": "uint256",
             "name": "bundles"
+          },
+          {
+            "type": "address",
+            "name": "referrer"
           }
         ],
         "outputs": []
       },
       {
         "type": "function",
-        "name": "mintPublic",
+        "name": "mintBridgeVUSD",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "destChainId"
+          },
+          {
+            "type": "address",
+            "name": "buyer"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintPublicVEO",
         "constant": false,
         "payable": false,
         "inputs": [
           {
             "type": "uint256",
             "name": "bundles"
+          },
+          {
+            "type": "address",
+            "name": "referrer"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintPublicVUSD",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "bundles"
+          },
+          {
+            "type": "address",
+            "name": "referrer"
           }
         ],
         "outputs": []
@@ -15316,6 +15680,25 @@
           }
         ],
         "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "referralAmountCounter",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
       },
       {
         "type": "function",
@@ -15392,13 +15775,13 @@
       },
       {
         "type": "function",
-        "name": "setUSDCAddress",
+        "name": "setUSDCContract",
         "constant": false,
         "payable": false,
         "inputs": [
           {
             "type": "address",
-            "name": "USDCContract"
+            "name": "contractAddress"
           }
         ],
         "outputs": []
@@ -15472,6 +15855,14 @@
             "name": "data"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "withdrawTokens",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
         "outputs": []
       },
       {

@@ -50,14 +50,12 @@ contract VIBE is
         uint claimedRevenueShare;
     }
 
-    address public poolContract;
-    uint public totalPoolRevenue;
 
     uint public constant MAX_TOTAL_SHARES = 1000000;
     uint public constant GENERAL_POOL_SHARES = 40000;
-    uint public constant VALIDATOR_POOL_SHARES = 138465;
+    uint public constant VALIDATOR_POOL_SHARES = 135000;
     uint public constant DEX_POOL_SHARES = 10000;
-    uint public constant CREATOR_POOL_SHARES = 10000;
+    uint public constant CREATOR_POOL_SHARES = 20000;
     uint public constant BUYER_POOL_SHARES = 10000;
     uint public constant TOTAL_POOL_SHARES = GENERAL_POOL_SHARES + VALIDATOR_POOL_SHARES + DEX_POOL_SHARES + CREATOR_POOL_SHARES + BUYER_POOL_SHARES;
 
@@ -70,6 +68,9 @@ contract VIBE is
     uint[] public DENOMINATIONS;
     GlobalData public global;
     uint public stakeQuota;
+
+    address public poolContract;
+    uint public totalPoolRevenue;
 
     event VibeNFTGranted(uint indexed tokenId, uint indexed denomination, address indexed account);
     event VibeNFTFundsClaimed(uint indexed tokenId, address indexed account, uint claimed);
@@ -253,27 +254,33 @@ contract VIBE is
     }
 
     function depositPoolRevenue(uint revenue) internal returns(uint balanceRevenue) {
-        require(poolContract != address(0), "Invalid Pool contract address");
 
-        uint general = (GENERAL_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
-        IPool(poolContract).depositRevenue{value: general}(0);
+        if (poolContract != address(0)) {
 
-        uint validator = (VALIDATOR_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
-        IPool(poolContract).depositRevenue{value: validator}(1);
+            uint general = (GENERAL_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
+            IPool(poolContract).depositRevenue{value: general}(0);
 
-        uint dex = (DEX_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
-        IPool(poolContract).depositRevenue{value: dex}(2);
+            uint validator = (VALIDATOR_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
+            IPool(poolContract).depositRevenue{value: validator}(1);
 
-        uint creator = (CREATOR_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
-        IPool(poolContract).depositRevenue{value: creator}(3);
+            uint dex = (DEX_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
+            IPool(poolContract).depositRevenue{value: dex}(2);
 
-        uint buyer = (BUYER_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
-        IPool(poolContract).depositRevenue{value: buyer}(4);
+            uint creator = (CREATOR_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
+            IPool(poolContract).depositRevenue{value: creator}(3);
 
-        uint poolRevenue = general + validator + dex + creator + buyer;
-        balanceRevenue = revenue - poolRevenue;
+            uint buyer = (BUYER_POOL_SHARES * revenue) / MAX_TOTAL_SHARES;
+            IPool(poolContract).depositRevenue{value: buyer}(4);
 
-        totalPoolRevenue += poolRevenue;
+            uint poolRevenue = general + validator + dex + creator + buyer;
+
+            totalPoolRevenue += poolRevenue;
+
+            balanceRevenue = revenue - poolRevenue;
+        } else {
+            balanceRevenue = revenue;
+        }
+
     }
 
     receive() external payable {
@@ -319,8 +326,8 @@ contract VIBE is
             global.issuedShares + TOTAL_POOL_SHARES,
             DENOMINATIONS,
             denominationCounts,
-            global.totalRevenueShare,
-            global.claimedRevenueShare
+            global.totalRevenueShare + totalPoolRevenue,
+            global.claimedRevenueShare + totalPoolRevenue
         );
     }
 

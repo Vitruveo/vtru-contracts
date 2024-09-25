@@ -172,8 +172,7 @@ contract Vortex is
     }
 
     function mintPartner(uint tokens, address account) public nonReentrant {
-        require(msg.sender == 0x1e189fC653BA6bEf980f2C8E173c2A24C24ddE2C, "Unauthorized user");
-        require(tokens < 50, "Maximum exceeded");
+        require(msg.sender == 0x4D5B24179c656A88087eF4369887fD58AB5e8EF3, "Unauthorized user");
         require(total.tokensSold + tokens <= MAX_TOKENS, "Max tokens sold");
 
         total.tokensSold += tokens;

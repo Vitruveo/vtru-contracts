@@ -40,6 +40,8 @@ contract LicenseRegistry is
     CountersUpgradeable.Counter public _licenseInstanceId;
     CountersUpgradeable.Counter public _licenseTypeId;
 
+    uint constant public FEE_BASISPOINTS_MAX = 2500;
+
     event LicenseIssued(string indexed assetKey, address licensee, uint indexed licenseId, uint indexed licenseInstanceId, uint256[] tokenIds);
 
     struct LicenseTypeInfo {
@@ -121,63 +123,92 @@ contract LicenseRegistry is
     }
 
     function issueLicenseUsingCredits(string calldata assetKey, uint256 licenseTypeId, uint64 quantity) public whenNotPaused nonReentrant isAllowed(msg.sender) {
-        _issueLicenseUsingCredits(msg.sender, assetKey, licenseTypeId, quantity);
+
+        address[] memory payees = new address[](3);
+        uint[] memory feeBasisPoints = new uint[](3);
+        _issueLicenseUsingCredits(msg.sender, assetKey, licenseTypeId, quantity, payees, feeBasisPoints);
     }
 
     function issueLicenseUsingCreditsStudio(address licensee, string calldata assetKey, uint256 licenseTypeId, uint64 quantity) public whenNotPaused nonReentrant {
         require(msg.sender == global.studioAccount, UNAUTHORIZED_USER);
-        _issueLicenseUsingCredits(licensee, assetKey, licenseTypeId, quantity);
+
+        address[] memory payees = new address[](3);
+        uint[] memory feeBasisPoints = new uint[](3);
+        _issueLicenseUsingCredits(licensee, assetKey, licenseTypeId, quantity, payees, feeBasisPoints);
     }
 
-    function _issueLicenseUsingCredits(address licensee, string calldata assetKey, uint256 licenseTypeId, uint64 quantity) internal {
+    function issueLicenseUsingCreditsWithPayeesStudio(address licensee, string calldata assetKey, uint256 licenseTypeId, uint64 quantity, address[] memory payees, uint[] memory feeBasisPoints) public whenNotPaused nonReentrant {
+        require(msg.sender == global.studioAccount, UNAUTHORIZED_USER);
+
+        _issueLicenseUsingCredits(licensee, assetKey, licenseTypeId, quantity, payees, feeBasisPoints);
+    }
+
+    function _issueLicenseUsingCredits(address licensee, string calldata assetKey, uint256 licenseTypeId, uint64 quantity, address[] memory payees, uint[] memory feeBasisPoints) internal {
         require(vibeContract != address(0), "VIBE contract address not set");
         require(IAssetRegistry(global.assetRegistryContract).isAsset(assetKey), "Asset not found");
         ICreatorData.AssetInfo memory asset = IAssetRegistry(global.assetRegistryContract).getAsset(assetKey);
-
+        require(payees.length == 3, "Payees array must have exactly 3 elements");
+        require(payees.length == feeBasisPoints.length, "Payees and Fee Basis Points arrays must have same length");
+        
         // 1) Check if asset license is available and get price
         ICreatorData.LicenseInfo memory licenseInfo = getAvailableLicense(assetKey, licenseTypeId, quantity);
-        uint editionCents = licenseInfo.editionCents * quantity;
-        uint platformFeeCents = uint64((editionCents * getPlatformFeeBasisPoints())/10000);
- 
+
         // 2) Redeem credits and send VTRU to vault
-        address reserved = address(0);
-        IVUSD(vusdContract).redeem(
-                                        licensee, 
-                                        _licenseInstanceId.current(), 
-                                        [asset.creator.vault, vibeContract, reserved, reserved, reserved], 
-                                        [editionCents, platformFeeCents, 0, 0, 0]
-                                    ); 
+        _redeemVUSD(licensee, asset.creator.vault, licenseInfo.editionCents * quantity, payees, feeBasisPoints);
 
         // 3) Update the license available quantity
         IAssetRegistry(global.assetRegistryContract).acquireLicense(licenseInfo.id, quantity, licensee);
 
         // 4) Generate a license instance
+        // 5) Mint assets
+        // 6) Emit event regarding license instance
+        _issueLicense(asset.creator.vault, assetKey, licenseTypeId, licenseInfo.id, quantity, licensee, licenseInfo.editionCents * quantity, feeBasisPoints[0]);
+
+    }
+
+    function _redeemVUSD(address licensee, address vault, uint editionCents, address[] memory payees, uint[] memory feeBasisPoints) internal {
+
+        uint platformFeeCents = uint64((editionCents * getPlatformFeeBasisPoints())/10000);
+
+        uint[] memory payeeFeeCents = new uint[](payees.length);
+        for(uint p=0;p<payees.length;p++) {
+            if (payees[p] != address(0)) {
+                require(feeBasisPoints[p] <= FEE_BASISPOINTS_MAX, "Fee exceeds maximum limit");
+                payeeFeeCents[p] = (editionCents * feeBasisPoints[p]) / 10000;
+            }
+        }
+
+        IVUSD(vusdContract).redeem(
+                                licensee, 
+                                _licenseInstanceId.current(), 
+                                [vault, vibeContract, payees[0], payees[1], payees[2]], 
+                                [editionCents, platformFeeCents, payeeFeeCents[0], payeeFeeCents[1], payeeFeeCents[2]]
+                            ); 
+    }
+
+    function _issueLicense(address vault, string calldata assetKey, uint licenseTypeId, uint licenseId, uint64 quantity, address licensee, uint editionCents, uint curatorBasisPoints) internal {
         _licenseInstanceId.increment();
         global.licenseInstancesByOwner[msg.sender].push(_licenseInstanceId.current());
         ICreatorData.LicenseInstanceInfo storage licenseInstanceInfo = global.licenseInstances[_licenseInstanceId.current()];
         licenseInstanceInfo.id = _licenseInstanceId.current();
         licenseInstanceInfo.assetKey = assetKey;
-        licenseInstanceInfo.licenseId = licenseInfo.id;
+        licenseInstanceInfo.licenseId = licenseId;
         licenseInstanceInfo.licenseFeeCents = editionCents;
         licenseInstanceInfo.licenseQuantity = quantity;
         licenseInstanceInfo.licensees.push(licensee);
-        // licenseInstanceInfo.platformBasisPoints;
-        // licenseInstanceInfo.curatorBasisPoints;
+        licenseInstanceInfo.platformBasisPoints = uint16(getPlatformFeeBasisPoints());
+        licenseInstanceInfo.curatorBasisPoints = uint16(curatorBasisPoints);
         // licenseInstanceInfo.sellerBasisPoints;
         // licenseInstanceInfo.creatorRoyaltyBasisPoints;
 
-
-        // 5) Mint assets
         if (global.licenseTypes[licenseTypeId].isMintable) {
-            licenseInstanceInfo.tokenIds = ICreatorVault(asset.creator.vault).mintLicensedAssets(licenseInstanceInfo, licensee);
+            licenseInstanceInfo.tokenIds = ICreatorVault(vault).mintLicensedAssets(licenseInstanceInfo, licensee);
             require(licenseInstanceInfo.tokenIds.length > 0, "Asset minting failed");
-            registerTokens(licensee, asset.creator.vault, licenseInstanceInfo.tokenIds);
+            registerTokens(licensee, vault, licenseInstanceInfo.tokenIds);
         }
-       
-        // TODO: Credit fee splitter contract
 
-        // 6) Emit event regarding license instance
-        emit LicenseIssued(assetKey, licensee, licenseInfo.id,  licenseInstanceInfo.id, licenseInstanceInfo.tokenIds);    
+        emit LicenseIssued(assetKey, licensee, licenseId,  licenseInstanceInfo.id, licenseInstanceInfo.tokenIds);    
+
     }
 
     function registerTokens(address owner, address vault, uint256[] memory tokenIds) internal {

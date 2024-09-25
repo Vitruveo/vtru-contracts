@@ -27,7 +27,6 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
     // Constants
     uint public constant ONE_EPOCH = 17280; // One epoch equals one day (in blocks)
     uint public constant DAYS_IN_YEAR = 365; // Days in a year
-    bytes32 public constant REDEEMER_ROLE = keccak256("REDEEMER_ROLE");
     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
 
     // Structs
@@ -36,16 +35,17 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         uint aprBasisPoints; // 100 basis points = 1%
     }
 
+    struct StakeTermFull {
+        uint id;
+        uint epochs; // Number of epochs (days)
+        uint aprBasisPoints; // 100 basis points = 1%
+        bool active;
+    }
+
     struct StakeTermInfo {
         uint amount;
         uint startBlock;
         uint stakeTermID;
-    }
-
-    struct StakeInfo {
-        uint stakeId;
-        uint unstakeAmount;
-        bool eligibleToUnstake;
     }
 
     struct StakeDetailInfo {
@@ -69,61 +69,86 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
     uint public totalUsers;
     uint public nextStakeTermId;
 
+    mapping(uint => bool) public activeStakeTerms;
+
+    
     // Events
     event Staked(address indexed user, uint amount, uint stakeTermID, uint startBlock);
     event Unstaked(address indexed user, uint amount, uint reward);
-    event StakeRedeemed(address indexed user, uint amount, uint reward);
 
-    // Initialization
     function initialize() public initializer {
-        __AccessControl_init();
-        __ReentrancyGuard_init();
-        __Pausable_init();
-        __UUPSUpgradeable_init();
-        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _setupRole(UPGRADER_ROLE, msg.sender);
-        _setupRole(REDEEMER_ROLE, msg.sender);
-        nextStakeTermId = 1;
+        // __AccessControl_init();
+        // __ReentrancyGuard_init();
+        // __Pausable_init();
+        // __UUPSUpgradeable_init();
+        // _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        // _setupRole(UPGRADER_ROLE, msg.sender);
+        // _setupRole(REDEEMER_ROLE, msg.sender);
+        // nextStakeTermId = 1;
 
-        // Add predefined stake terms
-        addStakeTerm(60, 1800);  // 60 epochs (days), 18% APR
-        addStakeTerm(90, 2300);  // 90 epochs (days), 23% APR
-        addStakeTerm(120, 3000); // 120 epochs (days), 30% APR
-        addStakeTerm(150, 3900); // 150 epochs (days), 39% APR
-        addStakeTerm(180, 5000); // 180 epochs (days), 50% APR
+        // // Add predefined stake terms
+        // addStakeTerm(60, 1800);  // 60 epochs (days), 18% APR
+        // addStakeTerm(90, 2300);  // 90 epochs (days), 23% APR
+        // addStakeTerm(120, 3000); // 120 epochs (days), 30% APR
+        // addStakeTerm(150, 3900); // 150 epochs (days), 39% APR
+        // addStakeTerm(180, 5000); // 180 epochs (days), 50% APR
     }
 
-    // Write Functions
-    function stake(uint stakeTermID) external payable nonReentrant whenNotPaused {
+    function stake(uint stakeTermID) external payable {
         require(msg.value > 0, "Amount must be greater than zero");
-        require(stakeTerms[stakeTermID].epochs > 0, "Invalid stake term");
 
-        userStakes[msg.sender].push(StakeTermInfo({
-            amount: msg.value,
-            startBlock: block.number,
+        _stake(msg.sender, msg.value, stakeTermID, block.number);
+    }
+
+    function stakeFor(address account, uint stakeTermID) public payable {
+        require(msg.value > 0, "Amount must be greater than zero");
+
+        _stake(account, msg.value, stakeTermID, block.number);
+    }
+
+    function stakeAdmin(address[] memory accounts, uint stakeTermID, uint blockNumber) public payable onlyRole(DEFAULT_ADMIN_ROLE){
+        require(msg.value > 0, "Amount must be greater than zero");
+        require(accounts.length > 0, "No accounts defined");
+
+        uint amountEach = msg.value / accounts.length;
+        for(uint a=0; a<accounts.length; a++) {
+            _stake(accounts[a], amountEach, stakeTermID, blockNumber);
+        }
+    }
+
+    function stakeAdminFunded(address account, uint stakeTermID, uint blockNumber, uint amount) public onlyRole(DEFAULT_ADMIN_ROLE){
+        _stake(account, amount, stakeTermID, blockNumber);
+    }
+
+    function _stake(address account, uint amount, uint stakeTermID, uint blockNumber) internal nonReentrant whenNotPaused {
+        require(stakeTerms[stakeTermID].epochs > 0, "Invalid stake term");
+        require(activeStakeTerms[stakeTermID] == true, "Stake Term not active");
+
+        userStakes[account].push(StakeTermInfo({
+            amount: amount,
+            startBlock: blockNumber,
             stakeTermID: stakeTermID
         }));
 
-        totalStaked += msg.value;
+        totalStaked += amount;
         totalStakesCreated++;
         activeStakes++;
-        if (userStakes[msg.sender].length == 1) {
+        if (userStakes[account].length == 1) {
             totalUsers++;
         }
 
-        emit Staked(msg.sender, msg.value, stakeTermID, block.number);
+        emit Staked(account, amount, stakeTermID, blockNumber);
     }
 
     function unstake() external nonReentrant whenNotPaused {
-        unstakeUser(msg.sender);
+        _unstake(msg.sender);
     }
 
-    function unstakeAdmin(address user) external nonReentrant onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
-        unstakeUser(user);
+    function unstakeAdmin(address account) external nonReentrant onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
+        _unstake(account);
     }
 
-    // Internal Function for Unstaking
-    function unstakeUser(address account) internal {
+    function _unstake(address account) internal {
         uint totalUnstakedAmount = 0;
         uint totalReward = 0;
         StakeTermInfo[] storage stakesArray = userStakes[account];
@@ -150,8 +175,10 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         emit Unstaked(account, totalUnstakedAmount - totalReward, totalReward);
     }
 
-    // Public Functions for Reward Calculation and Eligibility Check
     function calculatePartialReward(uint amount, uint startBlock, uint endBlock, uint stakeTermID) public view returns (uint) {
+        if (endBlock == 0) {
+            endBlock = block.number;
+        }
         uint totalEpochs = (endBlock - startBlock) / ONE_EPOCH; // Calculate the number of complete epochs
         uint rewardPerEpoch = (amount * stakeTerms[stakeTermID].aprBasisPoints) / (DAYS_IN_YEAR * 10000);
         return rewardPerEpoch * totalEpochs;
@@ -193,93 +220,6 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         return stakeInfos;
     }
 
-
-    function unstakeRedeemPreview(address account, uint amount) public view returns(uint earlyUnstaked, uint earlyReward, bool allowRedeem) {
-
-        StakeTermInfo[] memory stakesArray = userStakes[account];
-        uint remainingAmount = amount;
-
-        for (uint i = 0; i < stakesArray.length; i++) {
-            uint endBlock = stakesArray[i].startBlock + (stakeTerms[stakesArray[i].stakeTermID].epochs * ONE_EPOCH);
-            if (block.number < endBlock && stakesArray[i].amount > 0) {
-                endBlock = block.number;
-                uint reward = calculatePartialReward(stakesArray[i].amount, stakesArray[i].startBlock, endBlock, stakesArray[i].stakeTermID);
-                uint unstakeAmount = stakesArray[i].amount + reward;
-
-                if (earlyUnstaked + unstakeAmount > remainingAmount) {
-                    uint partialAmount = remainingAmount - earlyUnstaked;
-                    uint partialReward = (partialAmount * reward) / unstakeAmount;
-
-                    earlyUnstaked += partialAmount;
-                    earlyReward += partialReward;
-                    break;
-                } else {
-                    earlyUnstaked += unstakeAmount;
-                    earlyReward += reward;
-                }
-            }
-
-            if (earlyUnstaked >= amount) {
-                break;
-            }
-        }
-        allowRedeem = earlyUnstaked >= amount;
-    }
-
-    function unstakeRedeem(address account, uint amount) public nonReentrant whenNotPaused {
-        require(hasRole(REDEEMER_ROLE, msg.sender), "Must have redeemer role to redeem");
-
-        uint earlyUnstaked = 0;
-        uint earlyReward = 0;
-
-        StakeTermInfo[] storage stakesArray = userStakes[account];
-        uint remainingAmount = amount;
-
-        for (uint i = 0; i < stakesArray.length; i++) {
-            uint endBlock = stakesArray[i].startBlock + (stakeTerms[stakesArray[i].stakeTermID].epochs * ONE_EPOCH);
-            if (block.number < endBlock && stakesArray[i].amount > 0) {
-                endBlock = block.number;
-                uint reward = calculatePartialReward(stakesArray[i].amount, stakesArray[i].startBlock, endBlock, stakesArray[i].stakeTermID);
-                uint unstakeAmount = stakesArray[i].amount + reward;
-
-                if (earlyUnstaked + unstakeAmount > remainingAmount) {
-                    uint partialAmount = remainingAmount - earlyUnstaked;
-                    uint partialReward = (partialAmount * reward) / unstakeAmount;
-
-                    earlyUnstaked += partialAmount;
-                    earlyReward += partialReward;
-
-                    totalStaked -= partialAmount;
-
-                    stakesArray[i].amount -= partialAmount;
-                    break;
-                } else {
-                    earlyUnstaked += unstakeAmount;
-                    earlyReward += reward;
-
-                    totalStaked -= stakesArray[i].amount;
-                    activeStakes--;
-
-                    stakesArray[i].amount = 0; // Mark as withdrawn by setting amount to 0
-                }
-            }
-
-            if (earlyUnstaked >= amount) {
-                break;
-            }
-        }
-
-        require(earlyUnstaked >= amount, "Insufficient ineligible stakes to fulfill the amount");
-
-        totalRewardDistributed += earlyReward;
-
-        // Transfer the aggregated amount (from early unstaked) to the admin caller
-        payable(msg.sender).sendValue(earlyUnstaked);
-
-        emit StakeRedeemed(account, earlyUnstaked, earlyReward);
-    }
-
-    // Admin Functions
     function addStakeTerm(uint epochs, uint aprBasisPoints) public onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
         stakeTerms[nextStakeTermId] = StakeTerm({
             epochs: epochs,
@@ -288,36 +228,60 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         nextStakeTermId++;
     }
 
-    function importUserStakes(
-        address user,
-        uint[] calldata amounts,
-        uint[] calldata startBlocks,
-        uint[] calldata stakeTermIDs
-    ) external onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
-        require(
-            amounts.length == startBlocks.length &&
-            amounts.length == stakeTermIDs.length,
-            "Input arrays must have the same length"
-        );
-
-
-        for (uint i = 0; i < amounts.length; i++) {
-            require(stakeTerms[stakeTermIDs[i]].epochs > 0, "Invalid stake term");
-
-            userStakes[user].push(StakeTermInfo({
-                amount: amounts[i],
-                startBlock: startBlocks[i],
-                stakeTermID: stakeTermIDs[i]
-            }));
-
-            totalStaked += amounts[i];
-            totalStakesCreated++;
-            activeStakes++;
-            if (userStakes[user].length == 1) {
-                totalUsers++;
-            }
-        }
+    function changeStakeTerm(uint stakeTermId, uint epochs, uint aprBasisPoints) public onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
+        stakeTerms[stakeTermId].epochs = epochs;
+        stakeTerms[stakeTermId].aprBasisPoints = aprBasisPoints;
     }
+
+    function setStakeTermStatus(uint stakeTermId, bool isActive) public onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
+        activeStakeTerms[stakeTermId] = isActive;
+    }
+
+    function getStakeTerms() public view returns(StakeTermFull[] memory) {
+
+        StakeTermFull[] memory stakeTermsArr = new StakeTermFull[](nextStakeTermId);
+        for(uint s=1;s<stakeTermsArr.length;s++) { 
+
+            stakeTermsArr[s] = StakeTermFull({
+                id: s,
+                epochs: stakeTerms[s].epochs,
+                aprBasisPoints: stakeTerms[s].aprBasisPoints,
+                active: activeStakeTerms[s]
+            });    
+        }
+
+        return stakeTermsArr;
+    }
+
+    // function importUserStakes(
+    //     address user,
+    //     uint[] calldata amounts,
+    //     uint[] calldata startBlocks,
+    //     uint[] calldata stakeTermIDs
+    // ) external onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
+    //     require(
+    //         amounts.length == startBlocks.length &&
+    //         amounts.length == stakeTermIDs.length,
+    //         "Input arrays must have the same length"
+    //     );
+
+    //     for (uint i = 0; i < amounts.length; i++) {
+    //         require(stakeTerms[stakeTermIDs[i]].epochs > 0, "Invalid stake term");
+
+    //         userStakes[user].push(StakeTermInfo({
+    //             amount: amounts[i],
+    //             startBlock: startBlocks[i],
+    //             stakeTermID: stakeTermIDs[i]
+    //         }));
+
+    //         totalStaked += amounts[i];
+    //         totalStakesCreated++;
+    //         activeStakes++;
+    //         if (userStakes[user].length == 1) {
+    //             totalUsers++;
+    //         }
+    //     }
+    // }
 
     function withdrawVtru() external onlyRole(DEFAULT_ADMIN_ROLE) whenNotPaused {
         payable(msg.sender).sendValue(address(this).balance);
@@ -341,14 +305,12 @@ contract CoreStake is Initializable, AccessControlUpgradeable, ReentrancyGuardUp
         uint totalUsersCount,
         uint totalStakingTerms
     ) {
-        return (
-            totalStaked,
-            totalRewardDistributed,
-            totalStakesCreated,
-            activeStakes,
-            totalUsers,
-            nextStakeTermId - 1
-        );
+        totalStakedAmount = totalStaked;
+        totalRewardDist = totalRewardDistributed;
+        totalStakes = totalStakesCreated;
+        activeStakesCount = activeStakes;
+        totalUsersCount = totalUsers;
+        totalStakingTerms = nextStakeTermId - 1;
     }
 
     // Upgrade Authorization
