@@ -1,35 +1,38 @@
 {
   "mainnet": {
-    "CollectorCredit": "0x5c7421fcCA16C685cEC5aaFf745a9a6BDf75Ba06",
-    "CoreVestV2": "0xaEf0a72A661B82CB1d871FCA5117486C664EeF13",
-    "CoreStake": "0xf793A4faD64241c7273b9329FE39e433c2D45d71",
-    "VUSD": "0x1D607d8c617A09c638309bE2Ceb9b4afF42236dA",
-    "Vortex": "0xABA06E4A2Eb17C686Fc67C81d26701D9b82e3a41",
-    "LicenseRegistry": "0x79AfA7Dd7AE14F9C5255f1AC9c8A2b8bEb2CcCD1",
     "AssetRegistry": "0xeBF19B6f5c3f99BC5F75137D1113F506C7f6799E",
-    "MediaRegistry": "0x3925b92Ef881A9B0465Ef1ebDEE5D6C0ED4d464b",
-    "CreatorVault": "0x7aea4a32df743644474e62Bc38E7D6D0C00Af365",
+    "CollectorCredit": "0x5c7421fcCA16C685cEC5aaFf745a9a6BDf75Ba06",
+    "CoreStake": "0xf793A4faD64241c7273b9329FE39e433c2D45d71",
+    "CoreVestV2": "0xaEf0a72A661B82CB1d871FCA5117486C664EeF13",
+    "CreatorVault": "0x4Fe2de733F395B096ddBD96E7c723b8F83C49398",
     "CreatorVaultFactory": "0xDFda76C704515d19C737C54cFf523E45ab01d90A",
     "GeneralVault": "0xbE3B194c5D2C53F8603C4565489109d98C31f5b1",
     "GeneralVaultFactory": "0x3E0396Ac5869FAD21CaDD184Ba2F54BCC5853895",
-    "wVTRU": "0x3ccc3F22462cAe34766820894D04a40381201ef9",
-    "VIBE": "0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a",
+    "LicenseRegistry": "0x79AfA7Dd7AE14F9C5255f1AC9c8A2b8bEb2CcCD1",
+    "MediaRegistry": "0x3925b92Ef881A9B0465Ef1ebDEE5D6C0ED4d464b",
+    "RebaseInfo": "0xF7682C3434F1896D3Ed298A6E540CeA2D6FBEf78",
     "VEO": "0x4D5B24179c656A88087eF4369887fD58AB5e8EF3",
-    "RebaseInfo": "0xF7682C3434F1896D3Ed298A6E540CeA2D6FBEf78"
+    "Vortex": "0xABA06E4A2Eb17C686Fc67C81d26701D9b82e3a41",
+    "VIBE": "0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a",
+    "VUSD": "0x1D607d8c617A09c638309bE2Ceb9b4afF42236dA",
+    "wVTRU": "0x3ccc3F22462cAe34766820894D04a40381201ef9",
+    "BlockList": "0x31fAB18311C9CCAf40312CF954F49A88be5b1Ab2"
   },
   "testnet": {
-    "VIBE": "0x0fF7Ec155f8AB6689Ce47C34C4F619f569F65D03",
-    "CoreVestV2": "0xc5cc92e43100bd465bab7eedaed595bbc251e13a",
-    "wVTRU": "0xbB6b2C3f05B337083a460de32f4A8295Af9ED6E7",
     "AssetRegistry": "0xeC84C281396C4E971586E0707FA39585073E6403",
-    "LicenseRegistry": "0x1e8F9510e9A599204Db4dA3f352a7e73111f050C",
-    "MediaRegistry": "0x8e6A921744335994283046449522b914d0B06E7d",
     "CollectorCredit": "0x2921f3c02f4c6b1BbD35c5B8deA666F78A9D5919",
+    "CoreVestV2": "0xc5cc92e43100bd465bab7eedaed595bbc251e13a",
     "CoreStake": "0x2e26E4bA078Dd4DD9641DE9B538F8c9A975FD388",
     "CreatorVault": "0x34Cc530ecE2acdf6995d85120E2Ecf861B5592A0",
     "CreatorVaultFactory": "0xB507bc726f9Fdb29527667A1e39D0F3E05D37C4d",
+    "GeneralVault": "0x84301052c2324e361381402ACA8E74B0B453B6be",
     "GeneralVaultFactory": "0x8d8Eb1ACba64AA8720B8bfd58b6aeE105bfdCb48",
-    "VUSD": "0xE2D9A4901020C602BF291B1C56E97dC6dfa5b505"
+    "LicenseRegistry": "0x1e8F9510e9A599204Db4dA3f352a7e73111f050C",
+    "MediaRegistry": "0x8e6A921744335994283046449522b914d0B06E7d",
+    "VIBE": "0x0fF7Ec155f8AB6689Ce47C34C4F619f569F65D03",
+    "VUSD": "0xE2D9A4901020C602BF291B1C56E97dC6dfa5b505",
+    "wVTRU": "0xbB6b2C3f05B337083a460de32f4A8295Af9ED6E7",
+    "VEO": "0x5f12F8f9B6A2feAB838B72CAc8Be3C1bCCCfac55"
   },
   "ethereum": {
     "VEO": "0x3153F488233132c429175b5FD8199eb775b6C6Ff"
@@ -328,46 +331,15 @@
         ]
       },
       {
-        "type": "event",
-        "anonymous": false,
-        "name": "VibePoolRevenueDeposited",
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "poolId",
-            "indexed": true
-          },
-          {
-            "type": "uint256",
-            "name": "amount",
-            "indexed": false
-          }
-        ]
-      },
-      {
         "type": "function",
-        "name": "BUYER_POOL_SHARES",
+        "name": "BLOCK_LIST_CONTRACT",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
         "inputs": [],
         "outputs": [
           {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "CREATOR_POOL_SHARES",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
+            "type": "address",
             "name": ""
           }
         ]
@@ -398,34 +370,6 @@
             "name": ""
           }
         ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "DEX_POOL_SHARES",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "GENERAL_POOL_SHARES",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
         "outputs": [
           {
             "type": "uint256",
@@ -491,17 +435,24 @@
       },
       {
         "type": "function",
-        "name": "VALIDATOR_POOL_SHARES",
-        "constant": true,
-        "stateMutability": "view",
+        "name": "addTokensToOwnersBatch",
+        "constant": false,
         "payable": false,
-        "inputs": [],
-        "outputs": [
+        "inputs": [
           {
-            "type": "uint256",
-            "name": ""
+            "type": "address[]",
+            "name": "owners"
+          },
+          {
+            "type": "uint256[]",
+            "name": "tokenIds"
+          },
+          {
+            "type": "uint256[]",
+            "name": "tokenIndexes"
           }
-        ]
+        ],
+        "outputs": []
       },
       {
         "type": "function",
@@ -983,23 +934,6 @@
       },
       {
         "type": "function",
-        "name": "issueVibeNFTForStake",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "amount"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "name",
         "constant": true,
         "stateMutability": "view",
@@ -1195,32 +1129,6 @@
           {
             "type": "bool",
             "name": "approved"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "setPoolContract",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "contractAddress"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "setStakeQuota",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "quota"
           }
         ],
         "outputs": []
@@ -5994,6 +5902,20 @@
       },
       {
         "type": "function",
+        "name": "blockListContract",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "changeAssetStatus",
         "constant": false,
         "payable": false,
@@ -6675,20 +6597,6 @@
       },
       {
         "type": "function",
-        "name": "getVIBEContract",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "address",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "global",
         "constant": true,
         "stateMutability": "view",
@@ -6993,6 +6901,19 @@
       },
       {
         "type": "function",
+        "name": "setBlockListContract",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "setCreatorVaultFactoryContract",
         "constant": false,
         "payable": false,
@@ -7059,6 +6980,19 @@
       {
         "type": "function",
         "name": "setVUSDContract",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setWVTRUContract",
         "constant": false,
         "payable": false,
         "inputs": [
@@ -7200,6 +7134,20 @@
       {
         "type": "function",
         "name": "vusdContract",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "wvtruContract",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -9468,6 +9416,25 @@
       },
       {
         "type": "function",
+        "name": "calculateBonus",
+        "constant": true,
+        "stateMutability": "pure",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "amount"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "calculateFullReward",
         "constant": true,
         "stateMutability": "view",
@@ -10046,6 +10013,10 @@
           {
             "type": "address",
             "name": "account"
+          },
+          {
+            "type": "address",
+            "name": "payee"
           }
         ],
         "outputs": []
@@ -11463,45 +11434,6 @@
       {
         "type": "event",
         "anonymous": false,
-        "name": "RevenueClaimed",
-        "inputs": [
-          {
-            "type": "address",
-            "name": "claimer",
-            "indexed": true
-          },
-          {
-            "type": "uint256",
-            "name": "tokenId",
-            "indexed": false
-          },
-          {
-            "type": "uint256",
-            "name": "amount",
-            "indexed": false
-          }
-        ]
-      },
-      {
-        "type": "event",
-        "anonymous": false,
-        "name": "RevenueDeposited",
-        "inputs": [
-          {
-            "type": "address",
-            "name": "sender",
-            "indexed": true
-          },
-          {
-            "type": "uint256",
-            "name": "amount",
-            "indexed": false
-          }
-        ]
-      },
-      {
-        "type": "event",
-        "anonymous": false,
         "name": "RoleAdminChanged",
         "inputs": [
           {
@@ -11643,6 +11575,23 @@
         ]
       },
       {
+        "type": "event",
+        "anonymous": false,
+        "name": "VortexOwed",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "buyer",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "tokens",
+            "indexed": false
+          }
+        ]
+      },
+      {
         "type": "function",
         "name": "ADJUST_INTERVAL",
         "constant": true,
@@ -11729,6 +11678,20 @@
       {
         "type": "function",
         "name": "MAX_TOKENS",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "MINT_LIMIT",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -12253,6 +12216,25 @@
       },
       {
         "type": "function",
+        "name": "getTokensOwed",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "glyphCodes",
         "constant": true,
         "stateMutability": "view",
@@ -12441,6 +12423,36 @@
           {
             "type": "address",
             "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintAdminOwed",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "tokens"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintOwed",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "tokens"
           }
         ],
         "outputs": []
@@ -12879,6 +12891,44 @@
         "outputs": [
           {
             "type": "string",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "tokensOwed",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "tokensOwedAddresses",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
             "name": ""
           }
         ]
@@ -14672,6 +14722,38 @@
       {
         "type": "event",
         "anonymous": false,
+        "name": "AirdropToken",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "buyer",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "extAmount",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "quantity",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "referrer",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "tokenContract",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "AirdropVEO",
         "inputs": [
           {
@@ -14681,7 +14763,7 @@
           },
           {
             "type": "uint256",
-            "name": "amount",
+            "name": "extAmount",
             "indexed": false
           },
           {
@@ -14708,7 +14790,7 @@
           },
           {
             "type": "uint256",
-            "name": "amount",
+            "name": "extAmount",
             "indexed": false
           }
         ]
@@ -14759,6 +14841,11 @@
             "type": "address",
             "name": "referrer",
             "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "tokenContract",
+            "indexed": false
           }
         ]
       },
@@ -14795,6 +14882,11 @@
           {
             "type": "address",
             "name": "referrer",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "tokenContract",
             "indexed": false
           }
         ]
@@ -14858,6 +14950,28 @@
           {
             "type": "uint256",
             "name": "amount",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RegisterToken",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "tokenContract",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "owner",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "price",
             "indexed": false
           }
         ]
@@ -15036,7 +15150,7 @@
       },
       {
         "type": "function",
-        "name": "BUNDLE_PRICE_USDC",
+        "name": "BUNDLE_PRICE",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -15089,20 +15203,6 @@
         "outputs": [
           {
             "type": "bytes32",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "DISCOUNT_BLOCK_LIMIT",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
             "name": ""
           }
         ]
@@ -15214,7 +15314,7 @@
       },
       {
         "type": "function",
-        "name": "REFERRAL_FEE_BASIS_POINTS",
+        "name": "REFERRAL_VIBE_THRESHOLD",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -15228,7 +15328,7 @@
       },
       {
         "type": "function",
-        "name": "REFERRAL_VIBE_THRESHOLD",
+        "name": "TASK_MINT_TOKEN",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -15659,6 +15759,39 @@
       },
       {
         "type": "function",
+        "name": "mintBridgeToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "destChainId"
+          },
+          {
+            "type": "address",
+            "name": "buyer"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          },
+          {
+            "type": "uint256",
+            "name": "quantity"
+          },
+          {
+            "type": "address",
+            "name": "referrer"
+          },
+          {
+            "type": "address",
+            "name": "tokenContract"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "mintBridgeVEO",
         "constant": false,
         "payable": false,
@@ -15705,6 +15838,31 @@
       },
       {
         "type": "function",
+        "name": "mintPublicToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "amount"
+          },
+          {
+            "type": "uint256",
+            "name": "quantity"
+          },
+          {
+            "type": "address",
+            "name": "referrer"
+          },
+          {
+            "type": "address",
+            "name": "tokenContract"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "mintPublicVEO",
         "constant": false,
         "payable": false,
@@ -15728,11 +15886,7 @@
         "inputs": [
           {
             "type": "uint256",
-            "name": "bundles"
-          },
-          {
-            "type": "address",
-            "name": "referrer"
+            "name": "amount"
           }
         ],
         "outputs": []
@@ -15808,6 +15962,27 @@
             "name": ""
           }
         ]
+      },
+      {
+        "type": "function",
+        "name": "registerToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "tokenContract"
+          },
+          {
+            "type": "address",
+            "name": "owner"
+          },
+          {
+            "type": "uint256",
+            "name": "price"
+          }
+        ],
+        "outputs": []
       },
       {
         "type": "function",
@@ -15916,6 +16091,33 @@
       },
       {
         "type": "function",
+        "name": "tokenInfo",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": "owner"
+          },
+          {
+            "type": "uint256",
+            "name": "price"
+          },
+          {
+            "type": "bool",
+            "name": "active"
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "transferMessageOwnership",
         "constant": false,
         "payable": false,
@@ -15933,6 +16135,31 @@
         "constant": false,
         "payable": false,
         "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "updateToken",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "tokenContract"
+          },
+          {
+            "type": "address",
+            "name": "owner"
+          },
+          {
+            "type": "uint256",
+            "name": "price"
+          },
+          {
+            "type": "bool",
+            "name": "active"
+          }
+        ],
         "outputs": []
       },
       {
@@ -15993,6 +16220,521 @@
       {
         "type": "receive",
         "stateMutability": "payable"
+      }
+    ],
+    "BlockList": [
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "AdminChanged",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "previousAdmin",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "newAdmin",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "BeaconUpgraded",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "beacon",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Initialized",
+        "inputs": [
+          {
+            "type": "uint8",
+            "name": "version",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Paused",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleAdminChanged",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "bytes32",
+            "name": "previousAdminRole",
+            "indexed": true
+          },
+          {
+            "type": "bytes32",
+            "name": "newAdminRole",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleGranted",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleRevoked",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Unpaused",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Upgraded",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "implementation",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "WalletBlocked",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "WalletUnblocked",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "BLOCKER_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "DEFAULT_ADMIN_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "UPGRADER_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "add",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "addMultiple",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address[]",
+            "name": "accounts"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "blocked",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getRoleAdmin",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "grantRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "hasRole",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "immune",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "immunize",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "initialize",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "isBlocked",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "pause",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "paused",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "proxiableUUID",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "remove",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "renounceRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "revokeRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "supportsInterface",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes4",
+            "name": "interfaceId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "unpause",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeTo",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeToAndCall",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          },
+          {
+            "type": "bytes",
+            "name": "data"
+          }
+        ],
+        "outputs": []
       }
     ]
   }
