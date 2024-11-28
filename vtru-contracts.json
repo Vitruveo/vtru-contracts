@@ -18688,6 +18688,23 @@
       },
       {
         "type": "function",
+        "name": "addCreator",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "externalId"
+          },
+          {
+            "type": "address",
+            "name": "vaultAddress"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "addLevelToVersion",
         "constant": false,
         "payable": false,
@@ -18835,6 +18852,10 @@
           {
             "type": "uint256",
             "name": "totalPoints"
+          },
+          {
+            "type": "string[]",
+            "name": "completedAttributes"
           }
         ]
       },
@@ -18858,6 +18879,10 @@
           {
             "type": "uint256",
             "name": "totalPoints"
+          },
+          {
+            "type": "string[]",
+            "name": "completedAttributes"
           }
         ]
       },
