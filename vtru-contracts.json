@@ -35,7 +35,7 @@
     "wVTRU": "0xbB6b2C3f05B337083a460de32f4A8295Af9ED6E7",
     "VEO": "0x5f12F8f9B6A2feAB838B72CAc8Be3C1bCCCfac55",
     "ValidatorRegistry": "0x307faC58E575b18449f986f7083452F4bA5ed73a",
-    "truLevel": "0x6fDE70239278da677660Ca7dba43833EC945CEE2",
+    "truLevel": "0x85402b929AD7BcD293d02EB13735a20E23175CC8",
     "VERSE": "0x0BaFB74c1a993CFc87f9a75BA8d75fFE4dB64b1a"
   },
   "ethereum": {
@@ -18562,1143 +18562,1073 @@
     ],
     "truLevel": [
       {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
+        "type": "constructor",
+        "stateMutability": "undefined",
+        "payable": false,
+        "inputs": []
       },
       {
+        "type": "event",
         "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "previousAdmin",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "newAdmin",
-            "type": "address"
-          }
-        ],
         "name": "AdminChanged",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
+            "type": "address",
+            "name": "previousAdmin",
+            "indexed": false
           },
           {
-            "indexed": false,
-            "internalType": "string",
-            "name": "attributeKey",
-            "type": "string"
+            "type": "address",
+            "name": "newAdmin",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "AttributeAdd",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "string",
+            "type": "string",
             "name": "userId",
-            "type": "string"
+            "indexed": true
           },
           {
-            "indexed": false,
-            "internalType": "string",
+            "type": "string",
             "name": "attributeKey",
-            "type": "string"
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "AttributeRemove",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "address",
-            "name": "beacon",
-            "type": "address"
+            "type": "string",
+            "name": "userId",
+            "indexed": true
+          },
+          {
+            "type": "string",
+            "name": "attributeKey",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "BeaconUpgraded",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
+            "type": "address",
+            "name": "beacon",
+            "indexed": true
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "CurrentVersionUpdated",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
-          },
-          {
-            "indexed": true,
-            "internalType": "uint256",
-            "name": "factId",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "points",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "versionId",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "FactSet",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": false,
-            "internalType": "uint8",
-            "name": "version",
-            "type": "uint8"
+            "type": "string",
+            "name": "userId",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "factId",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "points",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "Initialized",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": false,
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
+            "type": "uint8",
+            "name": "version",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "Paused",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "bytes32",
-            "name": "role",
-            "type": "bytes32"
-          },
-          {
-            "indexed": true,
-            "internalType": "bytes32",
-            "name": "previousAdminRole",
-            "type": "bytes32"
-          },
-          {
-            "indexed": true,
-            "internalType": "bytes32",
-            "name": "newAdminRole",
-            "type": "bytes32"
+            "type": "address",
+            "name": "account",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "RoleAdminChanged",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "bytes32",
+            "type": "bytes32",
             "name": "role",
-            "type": "bytes32"
+            "indexed": true
           },
           {
-            "indexed": true,
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
+            "type": "bytes32",
+            "name": "previousAdminRole",
+            "indexed": true
           },
           {
-            "indexed": true,
-            "internalType": "address",
-            "name": "sender",
-            "type": "address"
+            "type": "bytes32",
+            "name": "newAdminRole",
+            "indexed": true
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "RoleGranted",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "bytes32",
+            "type": "bytes32",
             "name": "role",
-            "type": "bytes32"
+            "indexed": true
           },
           {
-            "indexed": true,
-            "internalType": "address",
+            "type": "address",
             "name": "account",
-            "type": "address"
+            "indexed": true
           },
           {
-            "indexed": true,
-            "internalType": "address",
+            "type": "address",
             "name": "sender",
-            "type": "address"
+            "indexed": true
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "RoleRevoked",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": false,
-            "internalType": "address",
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
             "name": "account",
-            "type": "address"
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "Unpaused",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": true,
-            "internalType": "address",
-            "name": "implementation",
-            "type": "address"
+            "type": "address",
+            "name": "account",
+            "indexed": false
           }
-        ],
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
         "name": "Upgraded",
-        "type": "event"
+        "inputs": [
+          {
+            "type": "address",
+            "name": "implementation",
+            "indexed": true
+          }
+        ]
       },
       {
+        "type": "event",
         "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
-          }
-        ],
         "name": "VersionDefined",
-        "type": "event"
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "versionId",
+            "indexed": false
+          }
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "DEFAULT_ADMIN_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "FACT_ORACLE_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "STUDIO_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "UPGRADER_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "levelId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "string[]",
-            "name": "attributeKeys",
-            "type": "string[]"
-          },
-          {
-            "internalType": "uint256[]",
-            "name": "attributePoints",
-            "type": "uint256[]"
-          },
-          {
-            "internalType": "enum truLevel.AttributeType[]",
-            "name": "attributeTypes",
-            "type": "uint8[]"
-          }
-        ],
+        "type": "function",
         "name": "addSchemaLevel",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "levelId",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "versionId"
           },
           {
-            "internalType": "string[]",
-            "name": "attributeKeys",
-            "type": "string[]"
+            "type": "uint256",
+            "name": "levelId"
           },
           {
-            "internalType": "uint256[]",
-            "name": "attributePoints",
-            "type": "uint256[]"
+            "type": "string[]",
+            "name": "attributeKeys"
           },
           {
-            "internalType": "enum truLevel.AttributeType[]",
-            "name": "attributeTypes",
-            "type": "uint8[]"
+            "type": "uint256[]",
+            "name": "attributePoints"
+          },
+          {
+            "type": "uint8[]",
+            "name": "attributeTypes"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "addSchemaLevel",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
+            "type": "uint256",
+            "name": "levelId"
           },
           {
-            "internalType": "address",
-            "name": "vault",
-            "type": "address"
+            "type": "string[]",
+            "name": "attributeKeys"
+          },
+          {
+            "type": "uint256[]",
+            "name": "attributePoints"
+          },
+          {
+            "type": "uint8[]",
+            "name": "attributeTypes"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "addUser",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
+            "type": "string",
+            "name": "userId"
           },
           {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
+            "type": "address",
+            "name": "vault"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "adminAttributes",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "key",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "startBlock",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "endBlock",
-            "type": "uint256"
-          }
-        ],
+        "constant": true,
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
+            "type": "string",
+            "name": ""
+          },
+          {
+            "type": "uint256",
+            "name": ""
           }
         ],
+        "outputs": [
+          {
+            "type": "string",
+            "name": "key"
+          },
+          {
+            "type": "uint256",
+            "name": "startBlock"
+          },
+          {
+            "type": "uint256",
+            "name": "endBlock"
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "attributes",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "key",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "points",
-            "type": "uint256"
-          },
-          {
-            "internalType": "enum truLevel.AttributeType",
-            "name": "attrType",
-            "type": "uint8"
-          }
-        ],
+        "constant": true,
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "string1",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "string2",
-            "type": "string"
+            "type": "string",
+            "name": ""
           }
         ],
+        "outputs": [
+          {
+            "type": "string",
+            "name": "key"
+          },
+          {
+            "type": "uint256",
+            "name": "points"
+          },
+          {
+            "type": "uint8",
+            "name": "attrType"
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "compareStrings",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
+        "constant": true,
         "stateMutability": "pure",
-        "type": "function"
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "string1"
+          },
+          {
+            "type": "string",
+            "name": "string2"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "currentVersion",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
+            "type": "uint256",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
+        "type": "function",
+        "name": "getLevel",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "levelId",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "levelId"
           }
         ],
-        "name": "getLevel",
         "outputs": [
           {
+            "type": "tuple",
+            "name": "",
             "components": [
               {
-                "internalType": "uint256",
-                "name": "levelId",
-                "type": "uint256"
+                "type": "uint256",
+                "name": "levelId"
               },
               {
+                "type": "tuple[]",
+                "name": "attributeItems",
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "key",
-                    "type": "string"
+                    "type": "string",
+                    "name": "key"
                   },
                   {
-                    "internalType": "uint256",
-                    "name": "points",
-                    "type": "uint256"
+                    "type": "uint256",
+                    "name": "points"
                   },
                   {
-                    "internalType": "enum truLevel.AttributeType",
-                    "name": "attrType",
-                    "type": "uint8"
+                    "type": "uint8",
+                    "name": "attrType"
                   }
-                ],
-                "internalType": "struct truLevel.AttributeInfo[]",
-                "name": "attributeItems",
-                "type": "tuple[]"
+                ]
               }
-            ],
-            "internalType": "struct truLevel.ExternalLevelInfo",
-            "name": "",
-            "type": "tuple"
+            ]
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
+        "type": "function",
+        "name": "getLevel",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "versionId"
           },
           {
-            "internalType": "uint256",
-            "name": "levelId",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "levelId"
           }
         ],
-        "name": "getLevel",
         "outputs": [
           {
+            "type": "tuple",
+            "name": "",
             "components": [
               {
-                "internalType": "uint256",
-                "name": "levelId",
-                "type": "uint256"
+                "type": "uint256",
+                "name": "levelId"
               },
               {
+                "type": "tuple[]",
+                "name": "attributeItems",
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "key",
-                    "type": "string"
+                    "type": "string",
+                    "name": "key"
                   },
                   {
-                    "internalType": "uint256",
-                    "name": "points",
-                    "type": "uint256"
+                    "type": "uint256",
+                    "name": "points"
                   },
                   {
-                    "internalType": "enum truLevel.AttributeType",
-                    "name": "attrType",
-                    "type": "uint8"
+                    "type": "uint8",
+                    "name": "attrType"
                   }
-                ],
-                "internalType": "struct truLevel.AttributeInfo[]",
-                "name": "attributeItems",
-                "type": "tuple[]"
+                ]
               }
-            ],
-            "internalType": "struct truLevel.ExternalLevelInfo",
-            "name": "",
-            "type": "tuple"
+            ]
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
+        "type": "function",
+        "name": "getLevels",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
         "inputs": [],
-        "name": "getLevels",
         "outputs": [
           {
+            "type": "tuple[]",
+            "name": "",
             "components": [
               {
-                "internalType": "uint256",
-                "name": "levelId",
-                "type": "uint256"
+                "type": "uint256",
+                "name": "levelId"
               },
               {
+                "type": "tuple[]",
+                "name": "attributeItems",
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "key",
-                    "type": "string"
+                    "type": "string",
+                    "name": "key"
                   },
                   {
-                    "internalType": "uint256",
-                    "name": "points",
-                    "type": "uint256"
+                    "type": "uint256",
+                    "name": "points"
                   },
                   {
-                    "internalType": "enum truLevel.AttributeType",
-                    "name": "attrType",
-                    "type": "uint8"
+                    "type": "uint8",
+                    "name": "attrType"
                   }
-                ],
-                "internalType": "struct truLevel.AttributeInfo[]",
-                "name": "attributeItems",
-                "type": "tuple[]"
+                ]
               }
-            ],
-            "internalType": "struct truLevel.ExternalLevelInfo[]",
-            "name": "",
-            "type": "tuple[]"
+            ]
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
+        "type": "function",
+        "name": "getLevels",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "versionId"
           }
         ],
-        "name": "getLevels",
         "outputs": [
           {
+            "type": "tuple[]",
+            "name": "",
             "components": [
               {
-                "internalType": "uint256",
-                "name": "levelId",
-                "type": "uint256"
+                "type": "uint256",
+                "name": "levelId"
               },
               {
+                "type": "tuple[]",
+                "name": "attributeItems",
                 "components": [
                   {
-                    "internalType": "string",
-                    "name": "key",
-                    "type": "string"
+                    "type": "string",
+                    "name": "key"
                   },
                   {
-                    "internalType": "uint256",
-                    "name": "points",
-                    "type": "uint256"
+                    "type": "uint256",
+                    "name": "points"
                   },
                   {
-                    "internalType": "enum truLevel.AttributeType",
-                    "name": "attrType",
-                    "type": "uint8"
+                    "type": "uint8",
+                    "name": "attrType"
                   }
-                ],
-                "internalType": "struct truLevel.AttributeInfo[]",
-                "name": "attributeItems",
-                "type": "tuple[]"
+                ]
               }
-            ],
-            "internalType": "struct truLevel.ExternalLevelInfo[]",
-            "name": "",
-            "type": "tuple[]"
+            ]
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [
-          {
-            "internalType": "bytes32",
-            "name": "role",
-            "type": "bytes32"
-          }
-        ],
+        "type": "function",
         "name": "getRoleAdmin",
-        "outputs": [
-          {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
-          }
-        ],
+        "constant": true,
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
+            "type": "bytes32",
+            "name": "role"
           }
         ],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "getUserById",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "currentLevel",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "totalPoints",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "extraPoints",
-            "type": "uint256"
-          },
-          {
-            "internalType": "string[]",
-            "name": "attributeSet",
-            "type": "string[]"
-          },
-          {
-            "components": [
-              {
-                "internalType": "uint256",
-                "name": "factId",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "points",
-                "type": "uint256"
-              }
-            ],
-            "internalType": "struct truLevel.FactInfo[]",
-            "name": "factSet",
-            "type": "tuple[]"
-          }
-        ],
+        "constant": true,
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
+        "payable": false,
         "inputs": [
           {
-            "internalType": "address",
-            "name": "vault",
-            "type": "address"
+            "type": "string",
+            "name": "userId"
           }
         ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "currentLevel"
+          },
+          {
+            "type": "uint256",
+            "name": "totalPoints"
+          },
+          {
+            "type": "uint256",
+            "name": "extraPoints"
+          },
+          {
+            "type": "string[]",
+            "name": "attributeSet"
+          },
+          {
+            "type": "tuple[]",
+            "name": "factSet",
+            "components": [
+              {
+                "type": "uint256",
+                "name": "factId"
+              },
+              {
+                "type": "uint256",
+                "name": "points"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "getUserByVault",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "vault"
+          }
+        ],
         "outputs": [
           {
-            "internalType": "uint256",
-            "name": "currentLevel",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "currentLevel"
           },
           {
-            "internalType": "uint256",
-            "name": "totalPoints",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "totalPoints"
           },
           {
-            "internalType": "uint256",
-            "name": "extraPoints",
-            "type": "uint256"
+            "type": "uint256",
+            "name": "extraPoints"
           },
           {
-            "internalType": "string[]",
-            "name": "attributeSet",
-            "type": "string[]"
+            "type": "string[]",
+            "name": "attributeSet"
           },
           {
+            "type": "tuple[]",
+            "name": "factSet",
             "components": [
               {
-                "internalType": "uint256",
-                "name": "factId",
-                "type": "uint256"
+                "type": "uint256",
+                "name": "factId"
               },
               {
-                "internalType": "uint256",
-                "name": "points",
-                "type": "uint256"
+                "type": "uint256",
+                "name": "points"
               }
-            ],
-            "internalType": "struct truLevel.FactInfo[]",
-            "name": "factSet",
-            "type": "tuple[]"
+            ]
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [
-          {
-            "internalType": "bytes32",
-            "name": "role",
-            "type": "bytes32"
-          },
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          }
-        ],
+        "type": "function",
         "name": "grantRole",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "bytes32",
-            "name": "role",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": "role"
           },
           {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
+            "type": "address",
+            "name": "account"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "hasRole",
-        "outputs": [
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
           {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
           }
         ],
-        "stateMutability": "view",
-        "type": "function"
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "initialize",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "pause",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "paused",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
+            "type": "bool",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "proxiableUUID",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
         "outputs": [
           {
-            "internalType": "bytes32",
-            "name": "",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": ""
           }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+        ]
       },
       {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "attributeKey",
-            "type": "string"
-          }
-        ],
+        "type": "function",
         "name": "removeUserAttribute",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
+            "type": "string",
+            "name": "userId"
           },
           {
-            "internalType": "uint256",
-            "name": "factId",
-            "type": "uint256"
+            "type": "string",
+            "name": "attributeKey"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "removeUserFact",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "bytes32",
-            "name": "role",
-            "type": "bytes32"
+            "type": "string",
+            "name": "userId"
           },
           {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
+            "type": "uint256",
+            "name": "factId"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "renounceRole",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "bytes32",
-            "name": "role",
-            "type": "bytes32"
+            "type": "bytes32",
+            "name": "role"
           },
           {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
+            "type": "address",
+            "name": "account"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "revokeRole",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "schemas",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "levelCount",
-            "type": "uint256"
-          }
-        ],
+        "constant": true,
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
+        "payable": false,
         "inputs": [
           {
-            "internalType": "uint256",
-            "name": "versionId",
-            "type": "uint256"
+            "type": "uint256",
+            "name": ""
           }
         ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "versionId"
+          },
+          {
+            "type": "uint256",
+            "name": "levelCount"
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "setCurrentVersion",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "attributeKey",
-            "type": "string"
+            "type": "uint256",
+            "name": "versionId"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "setUserAttribute",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
+            "type": "string",
+            "name": "userId"
           },
           {
-            "internalType": "uint256",
-            "name": "factId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "points",
-            "type": "uint256"
+            "type": "string",
+            "name": "attributeKey"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "setUserFact",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [
           {
-            "internalType": "bytes4",
-            "name": "interfaceId",
-            "type": "bytes4"
+            "type": "string",
+            "name": "userId"
+          },
+          {
+            "type": "uint256",
+            "name": "factId"
+          },
+          {
+            "type": "uint256",
+            "name": "points"
           }
         ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "supportsInterface",
-        "outputs": [
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
           {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
+            "type": "bytes4",
+            "name": "interfaceId"
           }
         ],
-        "stateMutability": "view",
-        "type": "function"
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
       },
       {
-        "inputs": [],
+        "type": "function",
         "name": "unpause",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "newImplementation",
-            "type": "address"
-          }
-        ],
-        "name": "upgradeTo",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "newImplementation",
-            "type": "address"
-          },
-          {
-            "internalType": "bytes",
-            "name": "data",
-            "type": "bytes"
-          }
-        ],
-        "name": "upgradeToAndCall",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "name": "userVaultLookup",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "name": "users",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "userId",
-            "type": "string"
-          },
-          {
-            "internalType": "address",
-            "name": "vault",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
+        "constant": false,
+        "payable": false,
         "inputs": [],
-        "name": "withdrawVTRU",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+        "outputs": []
       },
       {
+        "type": "function",
+        "name": "upgradeTo",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeToAndCall",
+        "constant": false,
         "stateMutability": "payable",
-        "type": "receive"
+        "payable": true,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          },
+          {
+            "type": "bytes",
+            "name": "data"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "userVaultLookup",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "users",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "name": "userId"
+          },
+          {
+            "type": "address",
+            "name": "vault"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "withdrawVTRU",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "receive",
+        "stateMutability": "payable"
       }
     ],
     "VERSE": [
