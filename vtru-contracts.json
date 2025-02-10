@@ -13686,6 +13686,19 @@
       },
       {
         "inputs": [],
+        "name": "VERSE_TOKEN_CONTRACT",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
         "name": "_tokenId",
         "outputs": [
           {
@@ -13844,11 +13857,6 @@
           {
             "internalType": "uint256",
             "name": "stake5BasisPoints",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "vibeBasisPoints",
             "type": "uint256"
           }
         ],
@@ -17284,6 +17292,19 @@
         "type": "function"
       },
       {
+        "inputs": [],
+        "name": "VERSE_TOKEN_CONTRACT",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
         "inputs": [
           {
             "internalType": "address",
@@ -17380,11 +17401,6 @@
           {
             "internalType": "uint256",
             "name": "stake5BasisPoints",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "vibeBasisPoints",
             "type": "uint256"
           }
         ],
