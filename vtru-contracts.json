@@ -1,6 +1,8 @@
 {
   "mainnet": {
     "AssetRegistry": "0xeBF19B6f5c3f99BC5F75137D1113F506C7f6799E",
+    "BlockList": "0x31fAB18311C9CCAf40312CF954F49A88be5b1Ab2",
+    "Boosters": "0x8246eb7D32416888aBeB23b1E715ee5A156d3aBe",
     "CollectorCredit": "0x5c7421fcCA16C685cEC5aaFf745a9a6BDf75Ba06",
     "CoreStake": "0xf793A4faD64241c7273b9329FE39e433c2D45d71",
     "CoreVestV2": "0xaEf0a72A661B82CB1d871FCA5117486C664EeF13",
@@ -10,40 +12,48 @@
     "GeneralVaultFactory": "0x3E0396Ac5869FAD21CaDD184Ba2F54BCC5853895",
     "LicenseRegistry": "0x79AfA7Dd7AE14F9C5255f1AC9c8A2b8bEb2CcCD1",
     "MediaRegistry": "0x3925b92Ef881A9B0465Ef1ebDEE5D6C0ED4d464b",
+    "Passport": "",
     "RebaseInfo": "0xF7682C3434F1896D3Ed298A6E540CeA2D6FBEf78",
+    "SupplySentry": "0x00d266bD859D5d9e54D6dB1aC774E56352c53705",
+    "truLevel": "",
+    "ValidatorRegistry": "",
     "VEO": "0x4D5B24179c656A88087eF4369887fD58AB5e8EF3",
-    "Vortex": "0xABA06E4A2Eb17C686Fc67C81d26701D9b82e3a41",
+    "VERSE": "0x72D2bFb14b3351d17A63Cd4c8085E034e313c54c",
     "VIBE": "0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a",
-    "VUSD": "0x1D607d8c617A09c638309bE2Ceb9b4afF42236dA",
-    "wVTRU": "0x3ccc3F22462cAe34766820894D04a40381201ef9",
-    "BlockList": "0x31fAB18311C9CCAf40312CF954F49A88be5b1Ab2",
-    "Boosters": "0x8246eb7D32416888aBeB23b1E715ee5A156d3aBe",
+    "Vortex": "0xABA06E4A2Eb17C686Fc67C81d26701D9b82e3a41",
     "VTROStake": "0x27436fccC5b1B3Ff50Bd74c413a9DCfEd4bA2d0b",
     "VTRU": "0x931AC5400ba4BD2d882Ef6Bc3C5714113f2a4d29",
-    "VERSE": "0x72D2bFb14b3351d17A63Cd4c8085E034e313c54c",
-    "SupplySentry": "0x00d266bD859D5d9e54D6dB1aC774E56352c53705"
+    "VTRUBridged": "",
+    "VUSD": "0x1D607d8c617A09c638309bE2Ceb9b4afF42236dA",
+    "wVTRU": "0x3ccc3F22462cAe34766820894D04a40381201ef9"
   },
   "testnet": {
     "AssetRegistry": "0xeC84C281396C4E971586E0707FA39585073E6403",
+    "BlockList": "",
+    "Boosters": "",
     "CollectorCredit": "0x2921f3c02f4c6b1BbD35c5B8deA666F78A9D5919",
-    "CoreVestV2": "0xc5cc92e43100bd465bab7eedaed595bbc251e13a",
     "CoreStake": "0x2e26E4bA078Dd4DD9641DE9B538F8c9A975FD388",
+    "CoreVestV2": "0xc5cc92e43100bd465bab7eedaed595bbc251e13a",
     "CreatorVault": "0x34Cc530ecE2acdf6995d85120E2Ecf861B5592A0",
     "CreatorVaultFactory": "0xB507bc726f9Fdb29527667A1e39D0F3E05D37C4d",
     "GeneralVault": "0x84301052c2324e361381402ACA8E74B0B453B6be",
     "GeneralVaultFactory": "0x8d8Eb1ACba64AA8720B8bfd58b6aeE105bfdCb48",
     "LicenseRegistry": "0x1e8F9510e9A599204Db4dA3f352a7e73111f050C",
     "MediaRegistry": "0x8e6A921744335994283046449522b914d0B06E7d",
-    "VIBE": "0x0fF7Ec155f8AB6689Ce47C34C4F619f569F65D03",
-    "VUSD": "0xE2D9A4901020C602BF291B1C56E97dC6dfa5b505",
-    "wVTRU": "0xbB6b2C3f05B337083a460de32f4A8295Af9ED6E7",
-    "VEO": "0x5f12F8f9B6A2feAB838B72CAc8Be3C1bCCCfac55",
-    "ValidatorRegistry": "0x307faC58E575b18449f986f7083452F4bA5ed73a",
+    "Passport": "0x343f2Bbb883CD44B3B699a304C8C93147a6761E5",
+    "RebaseInfo": "",
+    "SupplySentry": "",
     "truLevel": "0x85402b929AD7BcD293d02EB13735a20E23175CC8",
+    "ValidatorRegistry": "0x307faC58E575b18449f986f7083452F4bA5ed73a",
+    "VEO": "0x5f12F8f9B6A2feAB838B72CAc8Be3C1bCCCfac55",
     "VERSE": "0x091b646c9697Cb9058884f33FA91b1FFa723ACFe",
+    "VIBE": "0x0fF7Ec155f8AB6689Ce47C34C4F619f569F65D03",
+    "Vortex": "",
+    "VTROStake": "",
     "VTRU": "0x718540FCfaaeDb19DE2D9622E38f507011934C65",
     "VTRUBridged": "0x43c6914E7f966Ce203C47D22F743d476Ed066881",
-    "Passport": "0x343f2Bbb883CD44B3B699a304C8C93147a6761E5"
+    "VUSD": "0xE2D9A4901020C602BF291B1C56E97dC6dfa5b505",
+    "wVTRU": "0xbB6b2C3f05B337083a460de32f4A8295Af9ED6E7"
   },
   "ethereum": {
     "VEO": "0x3153F488233132c429175b5FD8199eb775b6C6Ff",
@@ -512,27 +522,6 @@
       },
       {
         "type": "function",
-        "name": "addTokensToOwnersBatch",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address[]",
-            "name": "owners"
-          },
-          {
-            "type": "uint256[]",
-            "name": "tokenIds"
-          },
-          {
-            "type": "uint256[]",
-            "name": "tokenIndexes"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "approve",
         "constant": false,
         "payable": false,
@@ -655,6 +644,25 @@
           }
         ],
         "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "fixedBalanceOf",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "fixBalance"
+          }
+        ]
       },
       {
         "type": "function",
@@ -3488,20 +3496,6 @@
       },
       {
         "type": "function",
-        "name": "SUPPLY_SENTRY_CONTRACT",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "address",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "UPGRADER_ROLE",
         "constant": true,
         "stateMutability": "view",
@@ -3638,40 +3632,6 @@
       },
       {
         "type": "function",
-        "name": "circuitBreakerInfo",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "decimals",
         "constant": true,
         "stateMutability": "view",
@@ -3702,62 +3662,6 @@
         "outputs": [
           {
             "type": "bool",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "epochCurrent",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "epochCurrentBlock",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "epochNext",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "epochNextBlock",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
             "name": ""
           }
         ]
@@ -3908,61 +3812,6 @@
       },
       {
         "type": "function",
-        "name": "priceCurrent",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "priceRange",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "startEpoch"
-          },
-          {
-            "type": "uint256",
-            "name": "endEpoch"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256[]",
-            "name": "blockNumbers"
-          },
-          {
-            "type": "uint256[]",
-            "name": "prices"
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "priceTrailing",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "proxiableUUID",
         "constant": true,
         "stateMutability": "view",
@@ -4015,19 +3864,6 @@
       },
       {
         "type": "function",
-        "name": "resetUserPeriod",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "revokeRole",
         "constant": false,
         "payable": false,
@@ -4039,19 +3875,6 @@
           {
             "type": "address",
             "name": "account"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "setPairAddress",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "newPairAddress"
           }
         ],
         "outputs": []
@@ -4139,28 +3962,6 @@
         "payable": false,
         "inputs": [],
         "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "totals",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          },
           {
             "type": "uint256",
             "name": ""
@@ -4274,33 +4075,6 @@
           }
         ],
         "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "userInfo",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
       },
       {
         "type": "function",
@@ -6778,6 +6552,55 @@
       },
       {
         "type": "function",
+        "name": "getLicenseType",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "licenseTypeId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "tuple",
+            "name": "",
+            "components": [
+              {
+                "type": "uint256",
+                "name": "id"
+              },
+              {
+                "type": "string",
+                "name": "name"
+              },
+              {
+                "type": "string",
+                "name": "info"
+              },
+              {
+                "type": "bool",
+                "name": "isMintable"
+              },
+              {
+                "type": "bool",
+                "name": "isElastic"
+              },
+              {
+                "type": "bool",
+                "name": "isActive"
+              },
+              {
+                "type": "address",
+                "name": "issuer"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "getPlatformFeeBasisPoints",
         "constant": true,
         "stateMutability": "view",
@@ -6946,52 +6769,6 @@
         "constant": false,
         "payable": false,
         "inputs": [],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "issueLicenseUsingCredits",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "string",
-            "name": "assetKey"
-          },
-          {
-            "type": "uint256",
-            "name": "licenseTypeId"
-          },
-          {
-            "type": "uint64",
-            "name": "quantity"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "issueLicenseUsingCreditsStudio",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "licensee"
-          },
-          {
-            "type": "string",
-            "name": "assetKey"
-          },
-          {
-            "type": "uint256",
-            "name": "licenseTypeId"
-          },
-          {
-            "type": "uint64",
-            "name": "quantity"
-          }
-        ],
         "outputs": []
       },
       {
@@ -10569,12 +10346,17 @@
             "indexed": true
           },
           {
-            "type": "address[5]",
-            "name": "payees"
+            "type": "address[]",
+            "name": "vusdPayees"
           },
           {
-            "type": "uint256[5]",
-            "name": "cents"
+            "type": "address[]",
+            "name": "vtruPayees"
+          },
+          {
+            "type": "uint256",
+            "name": "totalCents",
+            "indexed": false
           }
         ]
       },
@@ -10692,20 +10474,6 @@
       },
       {
         "type": "function",
-        "name": "BLOCKER_ROLE",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "bytes32",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "BLOCKS_PER_EPOCH",
         "constant": true,
         "stateMutability": "view",
@@ -10734,20 +10502,6 @@
       },
       {
         "type": "function",
-        "name": "GRANTER_ROLE",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "bytes32",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "REDEEMER_ROLE",
         "constant": true,
         "stateMutability": "view",
@@ -10763,20 +10517,6 @@
       {
         "type": "function",
         "name": "USDC_ADDRESS",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "address",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "VERSE_TOKEN_CONTRACT",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -10829,19 +10569,6 @@
             "name": ""
           }
         ]
-      },
-      {
-        "type": "function",
-        "name": "addBlock",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": []
       },
       {
         "type": "function",
@@ -10909,7 +10636,7 @@
       },
       {
         "type": "function",
-        "name": "calculateRedemptionAmounts",
+        "name": "balanceOfInCents",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -10917,32 +10644,12 @@
           {
             "type": "address",
             "name": "account"
-          },
-          {
-            "type": "address[5]",
-            "name": "payees"
-          },
-          {
-            "type": "uint256[5]",
-            "name": "cents"
           }
         ],
         "outputs": [
           {
             "type": "uint256",
-            "name": "totalVusd"
-          },
-          {
-            "type": "uint256",
-            "name": "grantVusd"
-          },
-          {
-            "type": "uint256",
-            "name": "nonGrantVusd"
-          },
-          {
-            "type": "uint256",
-            "name": "balanceVusd"
+            "name": ""
           }
         ]
       },
@@ -10959,6 +10666,154 @@
             "name": "ratio"
           }
         ]
+      },
+      {
+        "type": "function",
+        "name": "convertCentsToVtru",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "cents"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "convertCentsToVusd",
+        "constant": true,
+        "stateMutability": "pure",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "cents"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "convertVtruToCents",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "vtruAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "convertVtruToVusd",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "vtruAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "convertVusdToCents",
+        "constant": true,
+        "stateMutability": "pure",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "convertVusdToVtru",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "creditAdmin",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "debitAdmin",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          }
+        ],
+        "outputs": []
       },
       {
         "type": "function",
@@ -10998,40 +10853,6 @@
       },
       {
         "type": "function",
-        "name": "deleteAdmin",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "vusd"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "depositAdmin",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "vusd"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "depositCollateral",
         "constant": false,
         "stateMutability": "payable",
@@ -11041,135 +10862,41 @@
       },
       {
         "type": "function",
+        "name": "exchange",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "exchangeAdmin",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "vusdAmount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "fallbackVtruPrice",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
         "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getAccountVaultInfo",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "address",
-            "name": "vault"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": "limitCents"
-          },
-          {
-            "type": "uint256",
-            "name": "redeemedCents"
-          },
-          {
-            "type": "uint256",
-            "name": "limitCount"
-          },
-          {
-            "type": "uint256",
-            "name": "redeemedCount"
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getBalancesInCents",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          },
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getCurrentVtruPrice",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getGrant",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "grantee"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "tuple",
-            "name": "",
-            "components": [
-              {
-                "type": "uint256",
-                "name": "amount"
-              },
-              {
-                "type": "uint256",
-                "name": "balance"
-              },
-              {
-                "type": "uint256",
-                "name": "endEpoch"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getMaxVaultRedemptionLimitInCents",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "vault"
-          }
-        ],
         "outputs": [
           {
             "type": "uint256",
@@ -11192,85 +10919,6 @@
         "outputs": [
           {
             "type": "bytes32",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getVtruConversion",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "vusdAmount"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getVusdConversion",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "vtruAmount"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "grant",
-        "constant": false,
-        "stateMutability": "payable",
-        "payable": true,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "to"
-          },
-          {
-            "type": "uint256",
-            "name": "cents"
-          },
-          {
-            "type": "uint256",
-            "name": "epochs"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "grantBalanceOf",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
             "name": ""
           }
         ]
@@ -11380,12 +11028,8 @@
         "payable": false,
         "inputs": [
           {
-            "type": "address",
-            "name": "to"
-          },
-          {
             "type": "uint256",
-            "name": "vusdAmount"
+            "name": "usdcAmount"
           }
         ],
         "outputs": []
@@ -11396,16 +11040,7 @@
         "constant": false,
         "stateMutability": "payable",
         "payable": true,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "to"
-          },
-          {
-            "type": "uint256",
-            "name": "vusdAmount"
-          }
-        ],
+        "inputs": [],
         "outputs": []
       },
       {
@@ -11418,25 +11053,6 @@
         "outputs": [
           {
             "type": "string",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "nonGrantBalanceOf",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
             "name": ""
           }
         ]
@@ -11479,61 +11095,6 @@
       },
       {
         "type": "function",
-        "name": "redeem",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "licenseInstanceId"
-          },
-          {
-            "type": "address[5]",
-            "name": "payees"
-          },
-          {
-            "type": "uint256[5]",
-            "name": "cents"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "redeemAdmin",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "vusd"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "removeBlock",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "renounceOwnership",
         "constant": false,
         "payable": false,
@@ -11550,19 +11111,6 @@
             "type": "bytes32",
             "name": "role"
           },
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "revoke",
-        "constant": false,
-        "payable": false,
-        "inputs": [
           {
             "type": "address",
             "name": "account"
@@ -11589,32 +11137,6 @@
       },
       {
         "type": "function",
-        "name": "setDefaultVaultMaxRedemptionAmount",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "vusdAmount"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "setDefaultVaultMaxRedemptionCount",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "count"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "setFallbackVtruPrice",
         "constant": false,
         "payable": false,
@@ -11622,23 +11144,6 @@
           {
             "type": "uint256",
             "name": "cents"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "setMaxRedemptionAmountByVault",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "dollars"
-          },
-          {
-            "type": "address",
-            "name": "vault"
           }
         ],
         "outputs": []
@@ -11758,6 +11263,20 @@
         "payable": false,
         "inputs": [],
         "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "vtruPriceInCents",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
       },
       {
         "type": "function",
@@ -16241,6 +15760,31 @@
           {
             "type": "uint256",
             "name": "bundles"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "mintAdminVTRU",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "baseWalletAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "baseStakeAmount"
+          },
+          {
+            "type": "uint256",
+            "name": "stakeTermId"
           }
         ],
         "outputs": []
@@ -21968,6 +21512,20 @@
       },
       {
         "type": "function",
+        "name": "BLOCK_LIST_CONTRACT",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "CHAINS",
         "constant": true,
         "stateMutability": "view",
@@ -22118,20 +21676,6 @@
       },
       {
         "type": "function",
-        "name": "SUPPLY_SENTRY_CONTRACT",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "address",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "TASK_MINT_TOKEN",
         "constant": true,
         "stateMutability": "view",
@@ -22168,6 +21712,20 @@
         "outputs": [
           {
             "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "VIBE_CONTRACT",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
             "name": ""
           }
         ]
@@ -22659,14 +22217,6 @@
             "name": "account"
           }
         ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "sendToVIBE",
-        "constant": false,
-        "payable": false,
-        "inputs": [],
         "outputs": []
       },
       {
