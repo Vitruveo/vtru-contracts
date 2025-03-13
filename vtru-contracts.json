@@ -4,6 +4,7 @@
     "BlockList": "0x31fAB18311C9CCAf40312CF954F49A88be5b1Ab2",
     "Boosters": "0x8246eb7D32416888aBeB23b1E715ee5A156d3aBe",
     "CollectorCredit": "0x5c7421fcCA16C685cEC5aaFf745a9a6BDf75Ba06",
+    "ContractRegistry": "0x0FC006bda54457Bbc650002f8635464298101406",
     "CoreStake": "0xf793A4faD64241c7273b9329FE39e433c2D45d71",
     "CoreVestV2": "0xaEf0a72A661B82CB1d871FCA5117486C664EeF13",
     "CreatorVault": "0x4Fe2de733F395B096ddBD96E7c723b8F83C49398",
@@ -29,10 +30,11 @@
   },
   "testnet": {
     "AssetRegistry": "0xeC84C281396C4E971586E0707FA39585073E6403",
-    "BlockList": "",
+    "BlockList": "0xE6Ea33CCFDe3BE3fdc9525B6DddF59576c6BFcAc",
     "Boosters": "",
     "CollectorCredit": "0x2921f3c02f4c6b1BbD35c5B8deA666F78A9D5919",
-    "CoreStake": "0x2e26E4bA078Dd4DD9641DE9B538F8c9A975FD388",
+    "ContractRegistry": "0x0FC006bda54457Bbc650002f8635464298101406",
+    "CoreStake": "0xc6dA6d0c09c456dA920DD8061172CdFA70Fa47Ad",
     "CoreVestV2": "0xc5cc92e43100bd465bab7eedaed595bbc251e13a",
     "CreatorVault": "0x34Cc530ecE2acdf6995d85120E2Ecf861B5592A0",
     "CreatorVaultFactory": "0xB507bc726f9Fdb29527667A1e39D0F3E05D37C4d",
@@ -25895,6 +25897,565 @@
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
+      }
+    ],
+    "ContractRegistry": [
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "AdminChanged",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "previousAdmin",
+            "indexed": false
+          },
+          {
+            "type": "address",
+            "name": "newAdmin",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "BeaconUpgraded",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "beacon",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "ContractAdded",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "contractAddress",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "owner",
+            "indexed": true
+          },
+          {
+            "type": "string",
+            "name": "metadata",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "ContractRemoved",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Initialized",
+        "inputs": [
+          {
+            "type": "uint8",
+            "name": "version",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "OfficialStatusUpdated",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name",
+            "indexed": true
+          },
+          {
+            "type": "bool",
+            "name": "official",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Paused",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleAdminChanged",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "bytes32",
+            "name": "previousAdminRole",
+            "indexed": true
+          },
+          {
+            "type": "bytes32",
+            "name": "newAdminRole",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleGranted",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "RoleRevoked",
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "sender",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Unpaused",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "Upgraded",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "implementation",
+            "indexed": true
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "DEFAULT_ADMIN_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "UPGRADER_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "addContract",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name"
+          },
+          {
+            "type": "address",
+            "name": "contractAddress"
+          },
+          {
+            "type": "string",
+            "name": "metadata"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "getContract",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": "contractAddress"
+          },
+          {
+            "type": "address",
+            "name": "owner"
+          },
+          {
+            "type": "string",
+            "name": "metadata"
+          },
+          {
+            "type": "bool",
+            "name": "official"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getContracts",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "start"
+          },
+          {
+            "type": "uint256",
+            "name": "count"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string[]",
+            "name": "names"
+          },
+          {
+            "type": "address[]",
+            "name": "contractAddresses"
+          },
+          {
+            "type": "address[]",
+            "name": "owners"
+          },
+          {
+            "type": "string[]",
+            "name": "metadatas"
+          },
+          {
+            "type": "bool[]",
+            "name": "officials"
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "getRoleAdmin",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "grantRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "hasRole",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "initialize",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "pause",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "paused",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "proxiableUUID",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "removeContract",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "renounceRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "revokeRole",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes32",
+            "name": "role"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "setOfficial",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "name"
+          },
+          {
+            "type": "bool",
+            "name": "value"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "supportsInterface",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "bytes4",
+            "name": "interfaceId"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "unpause",
+        "constant": false,
+        "payable": false,
+        "inputs": [],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeTo",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "upgradeToAndCall",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "newImplementation"
+          },
+          {
+            "type": "bytes",
+            "name": "data"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "version",
+        "constant": true,
+        "stateMutability": "pure",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "string",
+            "name": ""
+          }
+        ]
       }
     ]
   }
