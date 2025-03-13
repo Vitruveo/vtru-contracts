@@ -13124,8 +13124,20 @@
           },
           {
             "indexed": false,
+            "internalType": "address",
+            "name": "claimer",
+            "type": "address"
+          },
+          {
+            "indexed": false,
             "internalType": "uint256",
-            "name": "amount",
+            "name": "vusdAmount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "vtruAmount",
             "type": "uint256"
           }
         ],
@@ -13143,8 +13155,20 @@
           },
           {
             "indexed": false,
+            "internalType": "address",
+            "name": "sender",
+            "type": "address"
+          },
+          {
+            "indexed": false,
             "internalType": "uint256",
-            "name": "amount",
+            "name": "vusdAmount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "vtruAmount",
             "type": "uint256"
           }
         ],
@@ -13448,7 +13472,7 @@
       },
       {
         "inputs": [],
-        "name": "VERSE_TOKEN_CONTRACT",
+        "name": "VUSD_CONTRACT",
         "outputs": [
           {
             "internalType": "address",
@@ -13603,7 +13627,12 @@
           },
           {
             "internalType": "uint256",
-            "name": "walletBasisPoints",
+            "name": "vusdBasisPoints",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vtruBasisPoints",
             "type": "uint256"
           },
           {
@@ -13796,19 +13825,6 @@
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "hasStakes",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
         "inputs": [
           {
             "internalType": "string",
@@ -13911,6 +13927,24 @@
           }
         ],
         "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "vusdAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "vtruAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "logDeposit",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -14049,19 +14083,6 @@
           }
         ],
         "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
-          }
-        ],
-        "name": "recoverFundsStudio",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -14386,7 +14407,20 @@
       },
       {
         "inputs": [],
-        "name": "vaultBalance",
+        "name": "version",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "pure",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "vtruBalance",
         "outputs": [
           {
             "internalType": "uint256",
@@ -14399,15 +14433,28 @@
       },
       {
         "inputs": [],
-        "name": "version",
+        "name": "vusdBalance",
         "outputs": [
           {
-            "internalType": "string",
+            "internalType": "uint256",
             "name": "",
-            "type": "string"
+            "type": "uint256"
           }
         ],
-        "stateMutability": "pure",
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "vusdBalanceInCents",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
