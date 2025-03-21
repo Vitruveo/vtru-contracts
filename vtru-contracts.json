@@ -6775,7 +6775,7 @@
       },
       {
         "type": "function",
-        "name": "issueLicenseUsingCreditsWithPayeesStudio",
+        "name": "issueLicenseUsingStudio",
         "constant": false,
         "payable": false,
         "inputs": [
@@ -10657,6 +10657,37 @@
       },
       {
         "type": "function",
+        "name": "calculateRedemptionAmounts",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "address[5]",
+            "name": "payees"
+          },
+          {
+            "type": "uint256[5]",
+            "name": "cents"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": "totalVusd"
+          },
+          {
+            "type": "uint256",
+            "name": "balanceVusd"
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "collateralRatio",
         "constant": true,
         "stateMutability": "view",
@@ -11094,6 +11125,31 @@
             "name": ""
           }
         ]
+      },
+      {
+        "type": "function",
+        "name": "redeem",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "licenseInstanceId"
+          },
+          {
+            "type": "address[5]",
+            "name": "payees"
+          },
+          {
+            "type": "uint256[5]",
+            "name": "cents"
+          }
+        ],
+        "outputs": []
       },
       {
         "type": "function",
