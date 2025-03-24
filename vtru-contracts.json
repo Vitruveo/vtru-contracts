@@ -13669,19 +13669,6 @@
             "internalType": "address",
             "name": "account",
             "type": "address"
-          }
-        ],
-        "name": "claimStudio",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "address",
-            "name": "account",
-            "type": "address"
           },
           {
             "internalType": "uint256",
@@ -13692,24 +13679,9 @@
             "internalType": "uint256",
             "name": "vtruBasisPoints",
             "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "stake1BasisPoints",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "stake3BasisPoints",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "stake5BasisPoints",
-            "type": "uint256"
           }
         ],
-        "name": "claimWithAllocateStudio",
+        "name": "claimStudio",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
