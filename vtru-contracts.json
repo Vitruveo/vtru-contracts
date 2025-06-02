@@ -17,7 +17,7 @@
     "RebaseInfo": "0xF7682C3434F1896D3Ed298A6E540CeA2D6FBEf78",
     "SupplySentry": "0x00d266bD859D5d9e54D6dB1aC774E56352c53705",
     "truLevel": "",
-    "ValidatorRegistry": "",
+    "ValidatorRegistry": "0x7A7dB2f4d073B59f9Af4beF32bc16C804610Edc9",
     "VEO": "0x4D5B24179c656A88087eF4369887fD58AB5e8EF3",
     "VERSE": "0x72D2bFb14b3351d17A63Cd4c8085E034e313c54c",
     "VIBE": "0x8e7C7f0DF435Be6773641f8cf62C590d7Dde5a8a",
@@ -497,20 +497,6 @@
       {
         "type": "function",
         "name": "USDC_DECIMALS",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "VALIDATOR_TOTAL_SHARES",
         "constant": true,
         "stateMutability": "view",
         "payable": false,
@@ -1064,15 +1050,7 @@
           },
           {
             "type": "uint256",
-            "name": "amount"
-          },
-          {
-            "type": "uint256",
             "name": "quantity"
-          },
-          {
-            "type": "address",
-            "name": "referrer"
           }
         ],
         "outputs": [
@@ -1081,19 +1059,6 @@
             "name": ""
           }
         ]
-      },
-      {
-        "type": "function",
-        "name": "mintBundle",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "quantity"
-          }
-        ],
-        "outputs": []
       },
       {
         "type": "function",
@@ -1157,23 +1122,6 @@
           {
             "type": "uint256",
             "name": "quantity"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "mintVibe",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "quantity"
-          },
-          {
-            "type": "bool",
-            "name": "isBundle"
           }
         ],
         "outputs": []
@@ -4570,19 +4518,6 @@
       },
       {
         "type": "function",
-        "name": "changeAssetPremiumFee",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "fee"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "consign",
         "constant": false,
         "stateMutability": "payable",
@@ -5519,6 +5454,69 @@
       },
       {
         "type": "function",
+        "name": "updateAssetLicense",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "string",
+            "name": "assetKey"
+          },
+          {
+            "type": "uint256",
+            "name": "licenseTypeId"
+          },
+          {
+            "type": "tuple",
+            "name": "license",
+            "components": [
+              {
+                "type": "uint256",
+                "name": "id"
+              },
+              {
+                "type": "uint256",
+                "name": "licenseTypeId"
+              },
+              {
+                "type": "uint64",
+                "name": "editions"
+              },
+              {
+                "type": "uint64",
+                "name": "editionCents"
+              },
+              {
+                "type": "uint64",
+                "name": "discountEditions"
+              },
+              {
+                "type": "uint64",
+                "name": "discountBasisPoints"
+              },
+              {
+                "type": "uint64",
+                "name": "discountMaxBasisPoints"
+              },
+              {
+                "type": "uint64",
+                "name": "available"
+              },
+              {
+                "type": "string",
+                "name": "code"
+              },
+              {
+                "type": "address[]",
+                "name": "licensees"
+              }
+            ]
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "updateAssetLicensePrice",
         "constant": false,
         "payable": false,
@@ -5568,20 +5566,6 @@
           {
             "type": "string",
             "name": "uri"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "upgradeAssetToPremium",
-        "constant": false,
-        "stateMutability": "payable",
-        "payable": true,
-        "inputs": [
-          {
-            "type": "string",
-            "name": "assetKey"
           }
         ],
         "outputs": []
@@ -10348,17 +10332,12 @@
             "indexed": true
           },
           {
-            "type": "address[]",
-            "name": "vusdPayees"
+            "type": "address[5]",
+            "name": "payees"
           },
           {
-            "type": "address[]",
-            "name": "vtruPayees"
-          },
-          {
-            "type": "uint256",
-            "name": "totalCents",
-            "indexed": false
+            "type": "uint256[5]",
+            "name": "cents"
           }
         ]
       },
@@ -10504,6 +10483,20 @@
       },
       {
         "type": "function",
+        "name": "GRANTER_ROLE",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "bytes32",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
         "name": "REDEEMER_ROLE",
         "constant": true,
         "stateMutability": "view",
@@ -10540,6 +10533,20 @@
         "outputs": [
           {
             "type": "uint256",
+            "name": ""
+          }
+        ]
+      },
+      {
+        "type": "function",
+        "name": "VTRU_USDC_PAIR",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
             "name": ""
           }
         ]
@@ -10936,6 +10943,23 @@
             "name": ""
           }
         ]
+      },
+      {
+        "type": "function",
+        "name": "fixDebit",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          }
+        ],
+        "outputs": []
       },
       {
         "type": "function",
@@ -16055,6 +16079,23 @@
       },
       {
         "type": "function",
+        "name": "recoveredVTRU",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "referralAmountCounter",
         "constant": true,
         "stateMutability": "view",
@@ -17684,28 +17725,6 @@
       {
         "type": "event",
         "anonymous": false,
-        "name": "FundsClaimed",
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account",
-            "indexed": true
-          },
-          {
-            "type": "address",
-            "name": "node",
-            "indexed": true
-          },
-          {
-            "type": "uint256",
-            "name": "amount",
-            "indexed": false
-          }
-        ]
-      },
-      {
-        "type": "event",
-        "anonymous": false,
         "name": "Initialized",
         "inputs": [
           {
@@ -17828,16 +17847,14 @@
         ]
       },
       {
-        "type": "function",
-        "name": "DECIMALS",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
+        "type": "event",
+        "anonymous": false,
+        "name": "VibeFundsReceived",
+        "inputs": [
           {
             "type": "uint256",
-            "name": ""
+            "name": "amount",
+            "indexed": false
           }
         ]
       },
@@ -17885,77 +17902,6 @@
       },
       {
         "type": "function",
-        "name": "activatePeriod",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "addPeriod",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "addPeriodExcludedNodes",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "period"
-          },
-          {
-            "type": "address[]",
-            "name": "nodes"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "addPeriodFunds",
-        "constant": false,
-        "stateMutability": "payable",
-        "payable": true,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "addPeriodFundsBatch",
-        "constant": false,
-        "stateMutability": "payable",
-        "payable": true,
-        "inputs": [
-          {
-            "type": "uint256[]",
-            "name": "batchPeriods"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "addValidator",
         "constant": false,
         "payable": false,
@@ -17990,157 +17936,12 @@
       },
       {
         "type": "function",
-        "name": "allFrozenNodes",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
+        "name": "depositVibeFunds",
+        "constant": false,
+        "stateMutability": "payable",
+        "payable": true,
         "inputs": [],
-        "outputs": [
-          {
-            "type": "address[]",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "claim",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "node"
-          },
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
         "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "claimAll",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "node"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "freezeNode",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "node"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "getPeriod",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "tuple",
-            "name": "",
-            "components": [
-              {
-                "type": "uint256",
-                "name": "period"
-              },
-              {
-                "type": "bool",
-                "name": "isActive"
-              },
-              {
-                "type": "uint256",
-                "name": "funds"
-              },
-              {
-                "type": "address[]",
-                "name": "excluded"
-              },
-              {
-                "type": "address[]",
-                "name": "claimed"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getPeriodClaim",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "node"
-          },
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getPeriodStartBlock",
-        "constant": true,
-        "stateMutability": "pure",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "period"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getPeriods",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256[]",
-            "name": ""
-          }
-        ]
       },
       {
         "type": "function",
@@ -18283,25 +18084,6 @@
       },
       {
         "type": "function",
-        "name": "isNodeFrozen",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "node"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "bool",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "isValidator",
         "constant": true,
         "stateMutability": "view",
@@ -18315,25 +18097,6 @@
         "outputs": [
           {
             "type": "bool",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "periodList",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
             "name": ""
           }
         ]
@@ -18420,19 +18183,6 @@
       },
       {
         "type": "function",
-        "name": "unfreezeNode",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "node"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "upgradeTo",
         "constant": false,
         "payable": false,
@@ -18461,6 +18211,20 @@
           }
         ],
         "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "vibeFunds",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ]
       },
       {
         "type": "function",
@@ -21897,6 +21661,27 @@
           {
             "type": "uint256",
             "name": "amount"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "burnVTRUTokenTo",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "destChainId"
+          },
+          {
+            "type": "uint256",
+            "name": "amount"
+          },
+          {
+            "type": "address",
+            "name": "account"
           }
         ],
         "outputs": []
