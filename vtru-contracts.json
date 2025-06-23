@@ -16,7 +16,7 @@
     "Passport": "",
     "RebaseInfo": "0xF7682C3434F1896D3Ed298A6E540CeA2D6FBEf78",
     "SupplySentry": "0x00d266bD859D5d9e54D6dB1aC774E56352c53705",
-    "truLevel": "", 
+    "truLevel": "",
     "ValidatorRegistry": "0x7A7dB2f4d073B59f9Af4beF32bc16C804610Edc9",
     "VEO": "0x4D5B24179c656A88087eF4369887fD58AB5e8EF3",
     "VERSE": "0x72D2bFb14b3351d17A63Cd4c8085E034e313c54c",
@@ -329,6 +329,33 @@
           {
             "type": "uint256",
             "name": "claimed",
+            "indexed": false
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "anonymous": false,
+        "name": "VibeFundsDeposited",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "account",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "total",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "community",
+            "indexed": false
+          },
+          {
+            "type": "uint256",
+            "name": "validator",
             "indexed": false
           }
         ]
@@ -3997,6 +4024,23 @@
       },
       {
         "type": "function",
+        "name": "unwrapTo",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "uint256",
+            "name": "amount"
+          },
+          {
+            "type": "address",
+            "name": "account"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
         "name": "upgradeTo",
         "constant": false,
         "payable": false,
@@ -5517,27 +5561,6 @@
       },
       {
         "type": "function",
-        "name": "updateAssetLicensePrice",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "string",
-            "name": "assetKey"
-          },
-          {
-            "type": "uint256",
-            "name": "licenseTypeId"
-          },
-          {
-            "type": "uint64",
-            "name": "editionCents"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "updateAssetStatus",
         "constant": false,
         "payable": false,
@@ -6228,33 +6251,6 @@
       },
       {
         "type": "function",
-        "name": "getAvailableCredits",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": "tokens"
-          },
-          {
-            "type": "uint256",
-            "name": "creditCents"
-          },
-          {
-            "type": "uint256",
-            "name": "creditOther"
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "getAvailableLicense",
         "constant": true,
         "stateMutability": "view",
@@ -6319,45 +6315,6 @@
                 "name": "licensees"
               }
             ]
-          }
-        ]
-      },
-      {
-        "type": "function",
-        "name": "getBuyCapabilityInCents",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "address[5]",
-            "name": "payees"
-          },
-          {
-            "type": "uint256[5]",
-            "name": "cents"
-          }
-        ],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": "total"
-          },
-          {
-            "type": "uint256",
-            "name": "grant"
-          },
-          {
-            "type": "uint256",
-            "name": "nonGrant"
-          },
-          {
-            "type": "uint256",
-            "name": "balance"
           }
         ]
       },
@@ -6663,20 +6620,6 @@
       },
       {
         "type": "function",
-        "name": "getUsdVtruExchangeRate",
-        "constant": true,
-        "stateMutability": "view",
-        "payable": false,
-        "inputs": [],
-        "outputs": [
-          {
-            "type": "uint256",
-            "name": ""
-          }
-        ]
-      },
-      {
-        "type": "function",
         "name": "global",
         "constant": true,
         "stateMutability": "view",
@@ -6759,7 +6702,7 @@
       },
       {
         "type": "function",
-        "name": "issueLicenseUsingStudio",
+        "name": "issueMintLicenseUsingStudio",
         "constant": false,
         "payable": false,
         "inputs": [
@@ -6778,6 +6721,47 @@
           {
             "type": "uint64",
             "name": "quantity"
+          },
+          {
+            "type": "address[]",
+            "name": "payees"
+          },
+          {
+            "type": "uint256[]",
+            "name": "feeBasisPoints"
+          }
+        ],
+        "outputs": []
+      },
+      {
+        "type": "function",
+        "name": "issuePrintLicenseUsingStudio",
+        "constant": false,
+        "payable": false,
+        "inputs": [
+          {
+            "type": "address",
+            "name": "licensee"
+          },
+          {
+            "type": "string",
+            "name": "assetKey"
+          },
+          {
+            "type": "uint256",
+            "name": "licenseTypeId"
+          },
+          {
+            "type": "uint64",
+            "name": "quantity"
+          },
+          {
+            "type": "uint256",
+            "name": "width"
+          },
+          {
+            "type": "uint256",
+            "name": "height"
           },
           {
             "type": "address[]",
@@ -6981,19 +6965,6 @@
           {
             "type": "address",
             "name": "account"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
-        "name": "setUsdVtruExchangeRate",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "uint256",
-            "name": "centsPerVtru"
           }
         ],
         "outputs": []
