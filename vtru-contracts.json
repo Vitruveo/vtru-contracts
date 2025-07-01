@@ -6770,6 +6770,14 @@
           {
             "type": "uint256[]",
             "name": "feeBasisPoints"
+          },
+          {
+            "type": "uint256",
+            "name": "ccAmountDiscount"
+          },
+          {
+            "type": "uint256",
+            "name": "ccAmountTotal"
           }
         ],
         "outputs": []
