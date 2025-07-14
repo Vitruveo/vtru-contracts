@@ -6757,11 +6757,7 @@
           },
           {
             "type": "uint256",
-            "name": "width"
-          },
-          {
-            "type": "uint256",
-            "name": "height"
+            "name": "area"
           },
           {
             "type": "address[]",
@@ -6770,10 +6766,6 @@
           {
             "type": "uint256[]",
             "name": "feeBasisPoints"
-          },
-          {
-            "type": "uint256",
-            "name": "ccAmountDiscount"
           },
           {
             "type": "uint256",
