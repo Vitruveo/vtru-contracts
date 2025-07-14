@@ -16058,23 +16058,6 @@
       },
       {
         "type": "function",
-        "name": "recoveredVTRU",
-        "constant": false,
-        "payable": false,
-        "inputs": [
-          {
-            "type": "address",
-            "name": "account"
-          },
-          {
-            "type": "uint256",
-            "name": "amount"
-          }
-        ],
-        "outputs": []
-      },
-      {
-        "type": "function",
         "name": "referralAmountCounter",
         "constant": true,
         "stateMutability": "view",
